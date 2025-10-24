@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         yellow: "#FFEB88",
         yellowHover: "#e6d47a",
+        yellowActive: "FFF9DA",
         blue: "#374F86",
         blueHover: "#c7d1e7",
         red: "#8c2b02",
@@ -20,6 +21,7 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        rubikmaps: ["Rubik Maps", "display"],
       },
     },
   },
