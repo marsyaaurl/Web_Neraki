@@ -1,25 +1,26 @@
 "use client";
 
-export default function Button({ label, variant, size, ...props }) {
+export default function Button({
+  label,
+  variant,
+  size,
+  className = "",
+  ...props
+}) {
   const variants = {
-    blue: " bg-blue text-white hover:bg-blueHover hover:text-blue ",
+    blue: " bg-blue text-white hover:bg-blueHover hover:text-blue transition-color duration-150",
     yellow: " bg-yellow text-black hover:bg-yellowHover hover:text-white",
-    red: " bg-red text-white hover:bg-redHover hover:text-black",
+    red: " bg-red text-white transition-color duration-150 hover:bg-redHover hover:text-red",
   };
 
-  const sizes = {
-    sm: "w-full lg:w-1/12",
-    md: "w-full lg:w-4/12",
-    lg: "",
-    xl: "",
-  };
+  const sizes = {};
 
   const variantClass = variants[variant];
   const sizeClass = sizes[size];
 
   return (
     <button
-      className={` text-lg font-semibold items-center py-2 rounded-full ${variantClass} ${sizeClass}`}
+      className={` text-lg font-semibold items-center rounded-full ${variantClass} ${className}`}
     >
       {label}
     </button>
