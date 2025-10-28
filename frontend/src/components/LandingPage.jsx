@@ -3,6 +3,7 @@ import ContainerLandingPage from "./ContainerLandingPage";
 import NavbarLandingPage from "./NavbarLandingPage";
 import Button from "./Button";
 import FooterLandingPage from "./FooterLandingPage";
+import Link from "next/link";
 
 const features = [
   {
@@ -32,7 +33,6 @@ export default function LandingPage() {
         <NavbarLandingPage />
       </header>
 
-      {/* Hero Section */}
       <section id="home">
         <ContainerLandingPage className="flex flex-col gap-2.5 my-6 md:my-10 mx-4 items-center">
           <h1 className="font-extrabold text-blue text-5xl sm:text-6xl text-center">
@@ -54,7 +54,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about">
         <ContainerLandingPage className="bg-blue px-10 py-6 md:px-28 md:py-10 lg:px-40 flex flex-col gap-5">
           <h2 className="text-4xl font-extrabold text-white">About Us</h2>
@@ -71,7 +70,6 @@ export default function LandingPage() {
         </ContainerLandingPage>
       </section>
 
-      {/* Feature Section */}
       <section id="feature">
         <ContainerLandingPage>
           <div className="bg-yellow py-6 px-10 md:px-28 md:py-5 lg:px-40 lg:py-5">
@@ -84,7 +82,7 @@ export default function LandingPage() {
             {features.map(({ icon, title, description }) => (
               <div
                 key={title}
-                className="bg-blueLight flex flex-col items-center gap-8 p-7 rounded-3xl shadow-sm"
+                className="bg-blueLight flex flex-col items-center gap-8 p-7 rounded-3xl shadow-md"
               >
                 <div className="w-fit p-4 rounded-full border-blue border-4 bg-white">
                   {icon}
@@ -120,11 +118,13 @@ export default function LandingPage() {
                 Di balik setiap produk lokal, ada
                 <strong> tangan yang bekerja tanpa henti.</strong>
               </p>
-              <Button
-                label="Yuk, Mulai Kenalan!"
-                variant="red"
-                className="w-full lg:w-1/2 py-2.5"
-              />
+              <Link href="/login">
+                <Button
+                  label="Yuk, Mulai Kenalan!"
+                  variant="red"
+                  className="w-full lg:w-1/2 py-2.5"
+                />
+              </Link>
             </div>
           </div>
         </ContainerLandingPage>

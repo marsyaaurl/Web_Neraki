@@ -25,6 +25,7 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
         rubikmaps: ["Rubik Maps", "display"],
       },
+      scrollBehavior: ["responsive"],
     },
   },
   plugins: [],
