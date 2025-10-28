@@ -1,10 +1,10 @@
-import Button from "@/components/Button";
-import Searchbar from "@/components/Searchbar";
+import LandingPage from "@/components/LandingPage";
 
 export default function Main() {
   return (
     <main>
-      <Button label="Log In" size="sm" variant="red"/>
+      <LandingPage/>
+      
       
     </main>
   );
