@@ -9,10 +9,10 @@ export default function NavbarLandingPage() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Our Features", href: "#feature" },
-    { label: "Contact Us", href: "#contact" },
+    { label: "Home", href: "/#home" },
+    { label: "About Us", href: "/#about" },
+    { label: "Our Features", href: "/#feature" },
+    { label: "Contact Us", href: "/#contact" },
   ];
 
   return (
@@ -49,7 +49,9 @@ export default function NavbarLandingPage() {
               </li>
             ))}
           </ul>
-          <Button label="Log In" variant="blue" className="w-36 py-2.5" />
+          <Link href="/login">
+            <Button label="Log In" variant="blue" className="w-36 py-2.5" />
+          </Link>
         </div>
       </div>
 
@@ -67,10 +69,11 @@ export default function NavbarLandingPage() {
               </li>
             ))}
           </ul>
-          <Button label="Log In" variant="blue" className="w-full py-2.5" />
+          <Link href="/login">
+            <Button label="Log In" variant="blue" className="w-full py-2.5" />
+          </Link>
         </div>
       )}
     </nav>
   );
 }
-
