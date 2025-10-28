@@ -49,7 +49,7 @@ export default function NavbarLandingPage() {
               </li>
             ))}
           </ul>
-          <Link href="/login">
+          <Link href="/Login">
             <Button label="Log In" variant="blue" className="w-36 py-2.5" />
           </Link>
         </div>
@@ -69,7 +69,7 @@ export default function NavbarLandingPage() {
               </li>
             ))}
           </ul>
-          <Link href="/login">
+          <Link href="/Login">
             <Button label="Log In" variant="blue" className="w-full py-2.5" />
           </Link>
         </div>

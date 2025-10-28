@@ -92,7 +92,7 @@ export default function login() {
         savedUser.username === formData.username &&
         savedUser.password === formData.password
       ) {
-        window.location.href = "/Home";
+        window.location.href = "/Profile";
       } else if (!savedUser) {
         alert("User tidak ditemukan! Silakan sign up.");
       } else {
@@ -113,10 +113,10 @@ export default function login() {
           <span className="font-rubikmaps uppercase">Neraki</span>
         </h1>
 
-        <div key={id} className="w-2/3 md:w-1/2 lg:w-1/3 flex flex-col gap-5">
+        <div key={id} className="w-2/3 md:w-1/2 lg:w-1/3 flex flex-col gap-2.5">
           <form className="flex flex-col gap-3" id={id} onSubmit={handleSubmit}>
             {fields.map(({ label, type, placeholder, name }) => (
-              <div key={label} className="flex flex-col">
+              <div key={label} className="flex flex-col gap-1.5">
                 <label className="text-blue">{label}</label>
                 <input
                   name={name}
