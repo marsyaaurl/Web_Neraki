@@ -92,7 +92,7 @@ export default function login() {
         savedUser.username === formData.username &&
         savedUser.password === formData.password
       ) {
-        window.location.href = "/Profile";
+        window.location.href = "/Home";
       } else if (!savedUser) {
         alert("User tidak ditemukan! Silakan sign up.");
       } else {
@@ -134,7 +134,7 @@ export default function login() {
           <div className="flex flex-col gap-2">
             <a
               href="#"
-              className="text-blue opacity-40 text-center"
+              className="text-blue opacity-40 text-center hover:underline"
               onClick={() => {
                 setActiveForm(toogleTarget);
                 setFormData({});
