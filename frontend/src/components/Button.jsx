@@ -9,7 +9,7 @@ export default function Button({
   const variants = {
     blue: "bg-blue text-white hover:bg-blueHover hover:text-blue transition-colors duration-150",
     yellow:
-      "bg-yellow text-black hover:bg-yellowHover hover:text-white transition-colors duration-150",
+      "bg-yellow text-blue hover:bg-yellowHover hover:text-white transition-colors duration-150",
     red: "bg-red text-white hover:bg-redHover hover:text-red transition-colors duration-150",
   };
 

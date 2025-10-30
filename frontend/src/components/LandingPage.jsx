@@ -118,7 +118,7 @@ export default function LandingPage() {
                 Di balik setiap produk lokal, ada
                 <strong> tangan yang bekerja tanpa henti.</strong>
               </p>
-              <Link href="/login">
+              <Link href="/Login">
                 <Button
                   label="Yuk, Mulai Kenalan!"
                   variant="red"

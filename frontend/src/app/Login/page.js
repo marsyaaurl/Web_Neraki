@@ -113,10 +113,10 @@ export default function login() {
           <span className="font-rubikmaps uppercase">Neraki</span>
         </h1>
 
-        <div key={id} className="w-2/3 md:w-1/2 lg:w-1/3 flex flex-col gap-5">
+        <div key={id} className="w-2/3 md:w-1/2 lg:w-1/3 flex flex-col gap-2.5">
           <form className="flex flex-col gap-3" id={id} onSubmit={handleSubmit}>
             {fields.map(({ label, type, placeholder, name }) => (
-              <div key={label} className="flex flex-col">
+              <div key={label} className="flex flex-col gap-1.5">
                 <label className="text-blue">{label}</label>
                 <input
                   name={name}
@@ -134,7 +134,7 @@ export default function login() {
           <div className="flex flex-col gap-2">
             <a
               href="#"
-              className="text-blue opacity-40 text-center"
+              className="text-blue opacity-40 text-center hover:underline"
               onClick={() => {
                 setActiveForm(toogleTarget);
                 setFormData({});
