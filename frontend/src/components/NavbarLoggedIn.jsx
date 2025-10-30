@@ -18,7 +18,7 @@ export default function NavbarLoggedIn() {
       {/* Logo (always left) */}
       <div>
         <a href="/Home">
-          <h1 className="uppercase font-rubikmaps text-3xl text-blue">Neraki</h1>
+          <h1 className="uppercase font-rubikmaps text-5xl text-blue">Neraki</h1>
         </a>
       </div>
 
