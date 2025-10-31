@@ -2,6 +2,9 @@ import NavbarLoggedIn from "@/components/NavbarLoggedIn";
 import Map from "@/components/Map";
 import UmkmList from "@/components/UmkmList";
 import Filter from "@/components/Filter";
+import PlacesForYourMood from "@/components/PlacesForYourMood";
+import Footer from "@/components/FooterLandingPage";
+import KitDate from "@/components/KitDate";
 
 export default function Home() {
     return (
@@ -17,8 +20,9 @@ export default function Home() {
             </div>
 
             {/* Perfect Kit Date and UMKM Recommendations*/}
-            <div>
-                
+            <div className="px-5 py-10 flex flex-row gap-x-5">
+                <PlacesForYourMood />
+                <KitDate />
             </div>
 
             {/* List of UMKM */}
@@ -33,6 +37,11 @@ export default function Home() {
                     <Filter />
                     <UmkmList />
                 </div>
+            </div>
+
+            {/* Footer */}
+            <div>
+                <Footer />
             </div>
         </>
     )
