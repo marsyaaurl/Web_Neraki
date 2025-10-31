@@ -43,10 +43,10 @@ const forms = {
         name: "username",
       },
       {
-        label: "Phone Number",
-        type: "text",
-        placeholder: "Nomor Telepon",
-        name: "phonenum",
+        label: "Email",
+        type: "email",
+        placeholder: "Email",
+        name: "email",
       },
       {
         label: "Kata Sandi",

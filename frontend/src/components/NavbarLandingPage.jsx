@@ -16,7 +16,7 @@ export default function NavbarLandingPage() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm px-4 py-3">
+    <nav className="sticky top-0 z-50 bg-white px-4 py-3">
       <div className="flex justify-between items-center">
         <Link href="#home" className="px-2">
           <h1 className="uppercase font-rubikmaps text-5xl text-blue">
@@ -43,7 +43,10 @@ export default function NavbarLandingPage() {
                 key={link.href}
                 className="px-2 py-2 md:py-3 rounded-full hover:bg-yellow"
               >
-                <Link href={link.href} className="text-blue font-semibold px-2">
+                <Link
+                  href={link.href}
+                  className="text-blue font-medium  px-2"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -62,7 +65,7 @@ export default function NavbarLandingPage() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block px-4 py-2 rounded-full text-blue font-semibold hover:bg-blueHover"
+                  className="block px-4 py-2 rounded-full text-blue font-medium hover:bg-blueHover "
                 >
                   {link.label}
                 </Link>
