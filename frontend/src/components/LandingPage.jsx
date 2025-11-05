@@ -28,12 +28,13 @@ const features = [
 
 export default function LandingPage() {
   return (
-    <main className="scroll-smooth">
+    <main>
       <header className="sticky top-0 z-50">
         <NavbarLandingPage />
       </header>
 
-      <section id="home">
+      {/* Hero Section */}
+      <section id="home" className="scroll-mt-24" aria-label="Beranda">
         <ContainerLandingPage className="flex flex-col gap-2.5 my-6 md:my-10 mx-4 items-center">
           <h1 className="font-extrabold text-blue text-5xl sm:text-6xl text-center">
             Dari Lokal, untuk Semua
@@ -45,42 +46,48 @@ export default function LandingPage() {
           </p>
         </ContainerLandingPage>
 
-        <div className="flex justify-center mx-8 my-5 md:my-10">
+        <figure className="flex justify-center mx-8 my-5 md:my-10">
           <img
             src="/assets/bamboo.webp"
-            alt="Bamboo Product"
+            alt="Produk bambu dari UMKM lokal"
             className="md:w-5/6 rounded-3xl border-[15px] border-yellow"
+            loading="lazy"
           />
-        </div>
+        </figure>
       </section>
 
-      <section id="about">
+      {/* About Section */}
+      <section id="about" className="scroll-mt-24" aria-label="Tentang Neraki">
         <ContainerLandingPage className="bg-blue px-10 py-6 md:px-28 md:py-10 lg:px-40 flex flex-col gap-5">
-          <h2 className="text-4xl font-extrabold text-white">About Us</h2>
-          <p className="text-base text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae atque
-            cumque ut quasi et necessitatibus quis porro ab ullam inventore.
-            Debitis ullam soluta a nostrum minus numquam eos eum fugit. Esse
-            inventore deleniti, facilis quibusdam ipsum minus praesentium ut
-            neque ipsam delectus rerum velit soluta ipsa sequi quod perspiciatis
-            corporis. Voluptas, mollitia. Impedit debitis aut hic quidem enim
-            consectetur quas totam, omnis id exercitationem, voluptatum, nobis
-            numquam. Quis perferendis id accusantium voluptates dolore modi.
+          <h2 className="text-4xl font-extrabold text-white">
+            Kenalan dengan Neraki
+          </h2>
+          <p className="text-base text-justify text-white">
+            Neraki adalah platform direktori UMKM yang memudahkan kamu menemukan
+            produk dan layanan lokal sesuai kebutuhan harian—mulai dari tempat
+            nongkrong yang cocok dengan mood, hingga rekomendasi kit spesial
+            untuk momen tertentu. Di tengah tantangan eksposur digital yang
+            masih minim, Neraki hadir sebagai solusi untuk mempertemukan
+            masyarakat dengan UMKM secara efisien dan menyenangkan. Lewat
+            fitur-fitur interaktif seperti challenge edukatif dan personalisasi
+            rekomendasi, kami ingin bantu UMKM lebih dikenal sekaligus bikin
+            eksplorasi kamu makin relevan dan seru.
           </p>
         </ContainerLandingPage>
       </section>
 
-      <section id="feature">
+      {/* Features Section */}
+      <section id="feature" className="scroll-mt-24" aria-label="Fitur Neraki">
         <ContainerLandingPage>
-          <div className="bg-yellow py-6 px-10 md:px-28 md:py-5 lg:px-40 lg:py-5">
+          <header className="bg-yellow py-6 px-10 md:px-28 md:py-5 lg:px-40 lg:py-5">
             <h2 className="text-4xl font-extrabold text-blue">
               Ada Apa dengan Neraki?
             </h2>
-          </div>
+          </header>
 
           <div className="flex flex-col lg:flex-row justify-between gap-8 mx-10 my-10">
             {features.map(({ icon, title, description }) => (
-              <div
+              <article
                 key={title}
                 className="bg-blueLight flex flex-col items-center gap-8 p-7 rounded-3xl shadow-md"
               >
@@ -93,24 +100,27 @@ export default function LandingPage() {
                   </h3>
                   <p className="text-justify text-blue">{description}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </ContainerLandingPage>
       </section>
 
       {/* Contact Section */}
-      <section id="contact">
+      <section id="contact" className="scroll-mt-24" aria-label="Kontak">
         <ContainerLandingPage className="px-10 mb-12 md:px-28 lg:px-40 flex flex-col gap-5">
           <h2 className="text-4xl font-extrabold text-blue">
             Lihat Lebih Dekat
           </h2>
           <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6">
-            <img
-              src="/assets/woman.webp"
-              alt="Woman"
-              className="w-full lg:w-2/4 rounded-3xl border-[15px] border-yellow"
-            />
+            <figure className="w-full lg:w-2/4">
+              <img
+                src="/assets/woman.webp"
+                alt="Pemilik usaha lokal"
+                className="rounded-3xl border-[15px] border-yellow"
+                loading="lazy"
+              />
+            </figure>
             <div className="flex flex-col gap-4 md:gap-3">
               <p className="text-base">
                 Di balik setiap warung kecil, ada <strong>mimpi besar.</strong>
@@ -118,7 +128,7 @@ export default function LandingPage() {
                 Di balik setiap produk lokal, ada
                 <strong> tangan yang bekerja tanpa henti.</strong>
               </p>
-              <Link href="/Login">
+              <Link href="/Login" aria-label="Masuk ke halaman login">
                 <Button
                   label="Yuk, Mulai Kenalan!"
                   variant="red"

@@ -11,6 +11,8 @@ export default function Button({
     yellow:
       "bg-yellow text-blue hover:bg-blue hover:text-yellow  transition-colors duration-150",
     red: "bg-red text-white hover:bg-redHover hover:text-red transition-colors duration-150",
+    yellow_v2:
+      "bg-yellow text-blue hover:bg-blueLight hover:text-blue  transition-colors duration-150",
   };
 
   const variantClass = variants[variant] || variants.blue;
