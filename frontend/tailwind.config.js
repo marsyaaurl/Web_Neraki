@@ -25,6 +25,9 @@ module.exports = {
         poppins: ["Poppins", "sans-serif"],
         rubikmaps: ["Rubik Maps", "display"],
       },
+      backgroundImage: {
+        bamboo: "url('/assets/images/bamboo.webp')",
+      },
       scrollBehavior: ["responsive"],
     },
   },
