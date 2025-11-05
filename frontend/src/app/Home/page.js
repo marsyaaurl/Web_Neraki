@@ -5,6 +5,7 @@ import Filter from "@/components/Filter";
 import PlacesForYourMood from "@/components/PlacesForYourMood";
 import Footer from "@/components/FooterLandingPage";
 import KitDate from "@/components/KitDate";
+import ChallengeCard from "@/components/ChallengeCard";
 
 export default function Home() {
     return (
@@ -15,13 +16,15 @@ export default function Home() {
             </div>
 
             {/* Map */}
-            <div className="pt-28 px-5 flex flex-col">
+            <div className="pt-24 px-5 flex flex-col gap-y-2">
+                <h1 className="text-3xl font-bold text-blue mb-2">UMKM Trendy Hari Ini!</h1>
                 <Map />
             </div>
 
             {/* Perfect Kit Date and UMKM Recommendations*/}
-            <div className="px-5 py-10 flex flex-row gap-x-5">
+            <div className="px-5 py-10 flex flex-col gap-y-5 md:flex-row md:gap-x-5">
                 <PlacesForYourMood />
+                <ChallengeCard />
                 <KitDate />
             </div>
 
@@ -33,7 +36,7 @@ export default function Home() {
                         Temukan usaha lokal yang kamu butuhkan!
                     </h4>
                 </div>
-                <div className="flex flex-col lg:flex-row gap-6 w-full max-w-7xl mx-auto">
+                <div className="flex flex-col md:flex-row gap-6 w-full max-w-7xl mx-auto">
                     <Filter />
                     <UmkmList />
                 </div>
