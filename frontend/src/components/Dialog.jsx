@@ -3,6 +3,8 @@
 import { CircleUser } from "lucide-react";
 import Button from "./Button";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Bamboo from "../../public/assets/bamboo.webp"
 
 
 export default function Dialog() {
@@ -62,10 +64,20 @@ export default function Dialog() {
   };
 
   return (
-    <main className="fixed bg-black inset-0 bg-opacity-20 flex items-center justify-center overflow-auto ">
-      
+    <main className="fixed inset-0 flex items-center justify-center overflow-auto">
+      {/* Background image */}
+      <Image 
+        src={Bamboo}
+        alt="Background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Gradient overlay (shadow hitam halus dari bawah ke atas) */}
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-sm"></div>
+
+      {/* Content section */}
       <section
-        className="bg-white mx-8  md:mx-10 w-full lg:w-1/2 p-10 rounded-3xl flex flex-col gap-7 justify-center mt-72 mb-5 md:mb-0 md:mt-20 shadow-lg "
+        className="relative bg-white mx-8 md:mx-10 w-full lg:w-1/2 p-10 rounded-3xl flex flex-col gap-7 justify-center mt-72 mb-5 md:mb-0 md:mt-20 shadow-2xl"
         aria-label="Profil Pengguna"
       >
         <header className="flex justify-center">
@@ -102,17 +114,17 @@ export default function Dialog() {
 
           {/* Photo Section */}
           <figure
-            className=" w-full h-72 flex flex-col items-center justify-center gap-3 py-3"
+            className="w-full h-72 flex flex-col items-center justify-center gap-3 py-3"
             aria-label="Foto Profil"
           >
             {avatar ? (
               <img
                 src={avatar}
                 alt="Foto Profil"
-                className="w-full h-full rounded-2xl object-cover border-2 border-red"
+                className="w-full h-full rounded-2xl object-cover border-2 border-red shadow-md"
               />
             ) : (
-              <div className=" border-2 border-red w-full h-full flex items-center justify-center rounded-2xl">
+              <div className="border-2 border-red w-full h-full flex items-center justify-center rounded-2xl shadow-inner bg-white/30">
                 <CircleUser size={34} color="#8c2b02" />
               </div>
             )}
@@ -166,5 +178,6 @@ export default function Dialog() {
         </footer>
       </section>
     </main>
+
   );
 }
