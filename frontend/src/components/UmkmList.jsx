@@ -54,6 +54,14 @@ export default function UmkmList({ umkmData = [] }) {
                 </div>
               </div>
 
+              {/* Tags */}
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="bg-blue text-yellow px-1.5 py-1 rounded-full text-xs font-medium">
+                  {item.category}
+                </span>
+                <span className="bg-yellow text-blue px-1.5 py-1 rounded-full text-xs font-medium">
+                  {item.priceRange ? `Rp ${item.priceRange}` : "N/A"}
+                </span>
               {/* Content */}
               <div className="p-3 flex flex-col gap-2.5">
                 {/* Name and Owner */}

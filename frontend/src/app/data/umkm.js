@@ -12,6 +12,15 @@ import Pannatown3 from "../../../public/assets/images/Pannatown3.jpg";
 import Pannatown4 from "../../../public/assets/images/Pannatown4.jpg";
 import Pannatown5 from "../../../public/assets/images/Pannatown5.jpg";
 import Pannatown6 from "../../../public/assets/images/Pannatown6.jpg";
+import Niekting from "../../../public/assets/images/Niekting.jpg";
+import Niekting1 from "../../../public/assets/images/Niekting1.jpg";
+import Niekting2 from "../../../public/assets/images/Niekting2.jpg";
+import Niekting3 from "../../../public/assets/images/Niekting3.jpg";
+import Niekting4 from "../../../public/assets/images/Niekting4.jpg";
+import Niekting5 from "../../../public/assets/images/Niekting5.jpg";
+import Niekting6 from "../../../public/assets/images/Niekting6.jpg";
+import Niekting7 from "../../../public/assets/images/Niekting7.jpg";
+import Niekting8 from "../../../public/assets/images/Niekting8.jpg";
 
 export const umkm = [
   {
@@ -20,8 +29,7 @@ export const umkm = [
     owner: "Salfiah",
     category: "Craft",
     shortloc: "Penjaringan, Jakarta Utara",
-    location:
-      "Jl. Petak Asem Selatan No. 23, Penjaringan, Jakarta Utara 14440",
+    location: "Jl. Petak Asem Selatan No. 23, Penjaringan, Jakarta Utara 14440",
     contact: {
       whatsapp: "088210983065",
       instagram: "waroengrajutfiah",
@@ -71,6 +79,43 @@ export const umkm = [
       setting: ["indoor"],
     },
     tags: ["dessert", "sweet", "event-catering", "local-brand"],
+  },
+  {
+    image: Niekting,
+    name: "Niekting",
+    owner: " Inna Sri Sugiati",
+    category: "Makanan",
+    shortloc: "Pancoran, Jakarta Selatan",
+    location:
+      "Jl. Pancoran Timur Raya No. 50, RT. 006 / RW. 008, Kelurahan Pengadegan, Kecamatan Pancoran, Jakarta Selatan 12770",
+    contact: {
+      whatsapp: "081284668146",
+      instagram: "asinanfermentasiniektingjaksel",
+    },
+    description:
+      "Asinan Fermentasi Niekting adalah usaha kuliner yang mengusung konsep fermentasi alami dalam sajian asinan, menghadirkan sensasi dan kesehatan di setiap gigitannya.",
+    priceRange: "",
+    backStory:
+      "Berawal dari dapur rumahan dan keresahan akan makanan sehat yang minim pengawet, Niekting lahir sebagai pelopor asinan fermentasi alami yang tak hanya memanjakan lidah, tapi juga menjaga kesehatan pencernaan. Mengusung resep tradisional turun-temurun yang dikombinasikan dengan sentuhan modern dan inovatif, Niekting menyajikan perpaduan segar antara buah dan sayur dalam kemasan yang praktis dan penuh manfaat probiotik.",
+    photos: [
+      Niekting1,
+      Niekting2,
+      Niekting3,
+      Niekting4,
+      Niekting5,
+      Niekting6,
+      Niekting7,
+      Niekting8,
+    ],
+    atmospherePhotos: [],
+    mood: {
+      energy: ["medium", "high"],
+      vibe: ["social", "creative"],
+      setting: ["indoor"],
+    },
+    tags: ["comfort-food", "casual", "hearty"],
+    dateTypes: ["romantic", "adventure", "foodie", "chill"],
+    mealTime: ["lunch", "dinner", "brunch"],
   },
   {
     image: NasiKokoh,

@@ -1,16 +1,22 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 import Searchbar from "./Searchbar";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
+//import { useSearch } from "./SearchContext";
 
 export default function NavbarLoggedIn() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  //const { searchQuery, setSearchQuery } = useSearch();
+
+ // const handleSearch = (e) => {
+  //  e.preventDefault();
+  //};
 
   const menuItems = [
-    { name: 'Home', href: '/Home' },
-    { name: 'Challenge', href: '/Challenge' },
-    { name: 'Profile', href: '/Profile' }
+    { name: "Home", href: "/Home" },
+    { name: "Challenge", href: "/Challenge" },
+    { name: "Profile", href: "/Profile" },
   ];
 
   return (
@@ -18,7 +24,9 @@ export default function NavbarLoggedIn() {
       {/* Logo (always left) */}
       <div>
         <a href="/Home">
-          <h1 className="uppercase font-rubikmaps text-5xl text-blue">Neraki</h1>
+          <h1 className="uppercase font-rubikmaps text-5xl text-blue">
+            Neraki
+          </h1>
         </a>
       </div>
 
@@ -29,10 +37,17 @@ export default function NavbarLoggedIn() {
             <li
               key={link.href}
               className={`px-5 py-2 md:py-3 rounded-full ${
-                pathname === link.href ? "bg-[#FFE074] font-semibold" : "hover:bg-[#FFE074]"
+                pathname === link.href
+                  ? "bg-[#FFE074] font-semibold"
+                  : "hover:bg-[#FFE074]"
               }`}
             >
-              <a href={link.href} className={`text-blue ${pathname === link.href ? 'font-semibold' : 'font-medium'}`}>
+              <a
+                href={link.href}
+                className={`text-blue ${
+                  pathname === link.href ? "font-semibold" : "font-medium"
+                }`}
+              >
                 {link.name}
               </a>
             </li>
@@ -40,7 +55,13 @@ export default function NavbarLoggedIn() {
         </ul>
 
         <div>
-          <Searchbar variant="blue" size="lg" />
+          <Searchbar
+            variant="blue"
+            size="lg"
+           // value={searchQuery}
+           // onChange={setSearchQuery}
+           // onSubmit={handleSearch}
+          />
         </div>
       </div>
 
@@ -54,12 +75,34 @@ export default function NavbarLoggedIn() {
         >
           <span className="sr-only">Open menu</span>
           {open ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           )}
         </button>
@@ -81,7 +124,9 @@ export default function NavbarLoggedIn() {
                       href={link.href}
                       onClick={() => setOpen(false)}
                       className={`block px-3 py-2 rounded-md text-blue ${
-                        pathname === link.href ? 'bg-[#FFE074] font-semibold' : 'hover:bg-[#FFE074] font-medium'
+                        pathname === link.href
+                          ? "bg-[#FFE074] font-semibold"
+                          : "hover:bg-[#FFE074] font-medium"
                       }`}
                     >
                       {link.name}

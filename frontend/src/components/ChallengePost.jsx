@@ -1,43 +1,78 @@
 "use-client";
 import { CircleUser, Image, Send } from "lucide-react";
 
-export default function ChallengePost() {
+export default function ChallengePost({
+  username = "John Doe",
+  caption = " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  hashtags = "#UMKM #Neraki #Enak",
+  imgUser = "",
+  userNameComment = "Jane Doe",
+  userComment = "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  imgSrc = "",
+  imgContent = "",
+}) {
   return (
-    <div className=" flex justify-between gap-10 ">
-      <div>
-        <div className=" flex border-2 border-red rounded-full p-3">
-          <img src="../assets/images/human" />
-        </div>
+    <div className=" flex flex-row gap-6 lg:gap-7">
+      <div className=" w-fit h-fit flex justify-center rounded-full">
+        <img
+          src={imgSrc}
+          width={65}
+          height={65}
+          className=" flex justify-center rounded-full"
+        />
       </div>
 
-      <div>
-        <div className=" flex flex-col lg:flex-row gap-7 justify-between border-2 border-blue p-8 rounded-3xl w-full">
-          <div className=" w-2/3 h-64 border-2 border-blue rounded-2xl flex items-center justify-center">
-            <Image size={34} color="#374F86" />
+      <div className="w-full px-8 py-6 backdrop-blur-md rounded-3xl" style={{ boxShadow: '0 0 7px rgba(0, 0, 0, 0.1)' }}>
+        <div className=" gap-4 items-center flex flex-col lg:flex-row ">
+          <div className="w-full lg:w-2/5 h-64 rounded-2xl flex  justify-center">
+            <img src={imgContent} sizes="100%" className=" rounded-xl" />
           </div>
+          <div className=" w-full flex flex-col justify-between gap-4">
+            <div className="flex flex-col gap-2">
+              <h1 className=" font-semibold text-xl text-blue">{username}</h1>
 
-          <div className=" flex flex-col justify-between">
-            <div className=" flex flex-col gap-2.5 ">
-              <h1 className=" font-medium text-xl">Neraki_88</h1>
-
-              <div className=" flex flex-col gap-3">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  qui a deserunt molestiae maxime neque totam. Minus, ipsa
-                  dolores, expedita est aut earum tenetur quasi, reprehenderit
-                  iure adipisci rem mollitia.
-                </p>
-                <p>#Lorem #Ipsum #Lorem #Ipsum #UMKM</p>
+              <div className=" flex flex-col gap-1">
+                <p>{caption}</p>
+                <p className=" font-medium">{hashtags}</p>
               </div>
             </div>
-            <div className=" flex gap-2 justify-between items-center">
-              <div className=" border-2 border-blue px-4 py-3.5 rounded-full w-full">
+
+            <hr className=""/>
+
+            <div className="px-3 rounded-xl w-full flex items-center">
+              <div className="flex flex-col gap-y-3">
+                <h2 className="font-semibold text-yellowHover">Comments</h2>
+                <div className="flex flex-row gap-4 ">
+                  <div className=" w-fit h-fit border-2 border-red  rounded-full">
+                    <img
+                      src={imgUser}
+                      width={45}
+                      height={45}
+                      className=" flex justify-center rounded-full"
+                    />
+                  </div>
+                  <div>
+                    <h1 className=" font-medium text-base text-blue">
+                      {userNameComment}
+                    </h1>
+
+                    <div className=" flex flex-col gap-3 text-sm">
+                      <p>{userComment}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className=" flex gap-5 items-center">
+              <div className=" border-2 border-blue px-4 py-3.5 rounded-full w-full h-15 ">
                 <input
                   type="text"
                   placeholder="Comment"
                   className=" w-full outline-none placeholder:text-blueHover"
                 />
               </div>
+
               <div className=" bg-blue p-4 rounded-full cursor-pointer w-fit hover:shadow-lg hover:shadow-blueHover transition-shadow">
                 <Send size={24} color="#fff" />
               </div>
