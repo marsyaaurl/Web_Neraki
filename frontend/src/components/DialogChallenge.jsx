@@ -25,6 +25,13 @@ export default function DialogChallenge({ onClose }) {
           <h2 className="text-3xl font-bold text-blue">New Post</h2>
         </header>
 
+        <div className=" flex gap-2 items-center">
+          <div className=" w-fit h-fit border-2 border-red rounded-full flex justify-center">
+            <img  width={34} height={34} className=" outline-none"/>
+          </div>
+          <h1 className=" text-lg font-semibold">Railly_1</h1>
+        </div>
+
         {/* Form */}
         <form className="flex flex-col gap-5" aria-label="Form Post Baru">
           {/* Upload Area */}
