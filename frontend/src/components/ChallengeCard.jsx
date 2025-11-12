@@ -11,7 +11,7 @@ export default function ChallengeCard() {
                 >
                     <div className="bg-[#f5e1d9] rounded-2xl w-full p-6 pb-0 relative overflow-hidden border-l-8 border-[#ba3902]">
                         <h1 className="text-[#ba3902] font-bold text-2xl mb-1 relative z-10">
-                        Challenge
+                        Tantangan
                         </h1>
                         <p className="text-[#ba3902] text-lg mb-4 relative z-10">
                         Ayo mengenal UMKM lebih jauh!

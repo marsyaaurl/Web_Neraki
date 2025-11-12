@@ -36,7 +36,7 @@ export const umkm = [
     },
     description:
       "Menjual berbagai macam aneka kerajinan tangan rajut, seperti gantungan kunci, bando, bros, tas, dan lain-lain.",
-    priceRange: "25.000-35.000",
+    priceRange: "",
     backStory:
       "Perjalanan usaha rajut saya dimulai dari emperan Fatahillah, Kota Tua, tahun 2010. Di tengah hiruk-pikuk wisatawan dan suasana heritage, saya menjajakan kerajinan tangan dengan penuh semangat. Lima tahun kemudian, saya bergabung sebagai UKM binaan Dekranasda—sebuah langkah besar yang membuka banyak pintu pembinaan dan peluang. Namun, jalan usaha tak selalu mulus. Pandemi COVID-19 memaksa saya berhenti selama tiga tahun. Di waktu yang sama, saya menjalani peran baru sebagai ibu dari dua anak, masing-masing lahir dengan jeda tiga tahun. Fokus saya pun bergeser, dan selama itu saya tidak aktif mengikuti bazar atau kegiatan UKM. Sebelumnya, saya sempat mendapat kios dari Walikota Jakarta Utara di Mangga Dua Pasar Pagi lantai 5, tapi hanya bertahan satu tahun karena tidak diperpanjang oleh Sudin. Saya juga pernah mengelola kios di Fatahillah selama 1,5 tahun, namun harus berhenti karena kesibukan anak masuk sekolah. Kini, setelah melewati berbagai fase kehidupan, saya kembali aktif. Dengan semangat baru dan pengalaman panjang, saya siap melanjutkan usaha rajut ini—membawa cerita, warna, dan kehangatan dalam setiap karya.",
     photos: [WaroengRajutFiah1, WaroengRajutFiah2],
@@ -61,7 +61,7 @@ export const umkm = [
     },
     description:
       "Pannatown adalah usaha dessert dan minuman yang bisa dipesan online maupun untuk acara spesial. Kami juga menyediakan dessert table cantik untuk wedding, ulang tahun, dan berbagai event lainnya—siap mempermanis momen berharga Anda.",
-    priceRange: "5.000-300.000",
+    priceRange: "",
     backStory:
       "Pannatown lahir di tahun 2019, bukan dari rencana besar, tapi dari titik balik kehidupan. Saat pandemi melanda dan usaha pertama saya terpaksa berhenti, saya memilih untuk bangkit lewat hal yang sederhana: makanan penutup dan minuman yang bisa menghadirkan kebahagiaan kecil di tengah masa sulit. Berawal dari dapur rumah, saya mulai menjual dessert secara online. Tak disangka, dukungan datang dari berbagai arah—termasuk dari program UMKM pemerintah yang sangat membantu saya bertahan dan berkembang. Pannatown pun resmi terdaftar sebagai UMKM, dan sejak itu, saya merasa benar-benar diberkati. Banyak yang percaya, banyak yang mendukung. Kini, Pannatown tak hanya hadir secara online, tapi juga mempermanis berbagai acara lewat dessert table untuk wedding, ulang tahun, dan event lainnya. Dari masa jatuh, lahirlah sesuatu yang manis.",
     photos: [

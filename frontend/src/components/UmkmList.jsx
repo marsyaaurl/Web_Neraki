@@ -68,10 +68,10 @@ export default function UmkmList() {
 
               {/* Tags */}
               <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="bg-blue text-yellow px-2.5 py-1 rounded-full text-xs font-medium">
+                <span className="bg-blue text-yellow px-1.5 py-1 rounded-full text-xs font-medium">
                   {item.category}
                 </span>
-                <span className="bg-yellow text-blue px-2.5 py-1 rounded-full text-xs font-medium">
+                <span className="bg-yellow text-blue px-1.5 py-1 rounded-full text-xs font-medium">
                   {item.priceRange ? `Rp ${item.priceRange}` : "N/A"}
                 </span>
               </div>
