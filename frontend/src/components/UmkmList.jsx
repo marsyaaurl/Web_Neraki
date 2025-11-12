@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import { MapPin, MessageCircle, Instagram } from "lucide-react";
-import { umkm } from "../app/data/umkm.js";
+import { MapPin } from "lucide-react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-export default function UmkmList() {
+export default function UmkmList({ umkmData = [] }) {
   const [selectedUmkm, setSelectedUmkm] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -25,45 +24,34 @@ export default function UmkmList() {
 
   return (
     <div className="flex-1">
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {umkm.map((item) => (
-          <div
-            key={item.name}
-            className="bg-white rounded-2xl backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-fit cursor-pointer"
-            onClick={() => handleOpen(item)}
-          >
-            {/* Image */}
-            <div className="relative w-full aspect-square overflow-hidden pt-5 pb-2">
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={400}
-                height={400}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 rounded-lg"
-              />
+      {umkmData.length > 0 ? (
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {umkmData.map((item) => (
+            <div
+              key={item.name}
+              className="bg-white rounded-2xl backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-fit cursor-pointer"
+              onClick={() => handleOpen(item)}
+            >
+              {/* Image */}
+              <div className="relative w-full aspect-square overflow-hidden pt-5 pb-2">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 rounded-lg"
+                />
 
-              {/* Location Badge */}
-              <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm px-2.5 py-1.5 rounded-lg shadow-sm flex items-center gap-1.5">
-                <MapPin size={14} />
-                <span className="text-[10px] font-medium text-gray-700 hidden sm:inline">
-                  {item.shortloc}
-                </span>
-                <span className="text-xs font-medium text-gray-700 sm:hidden">
-                  {item.shortloc.split(",")[0]}
-                </span>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="p-3 flex flex-col gap-2.5">
-              {/* Name and Owner */}
-              <div>
-                <h3 className="text-gray-900 font-bold text-sm sm:text-base leading-tight truncate">
-                  {item.name}
-                </h3>
-                <p className="text-gray-500 text-xs mt-0.5 truncate">
-                  {item.owner}
-                </p>
+                {/* Location Badge */}
+                <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm px-2.5 py-1.5 rounded-lg shadow-sm flex items-center gap-1.5">
+                  <MapPin size={14} />
+                  <span className="text-[10px] font-medium text-gray-700 hidden sm:inline">
+                    {item.shortloc}
+                  </span>
+                  <span className="text-xs font-medium text-gray-700 sm:hidden">
+                    {item.shortloc.split(",")[0]}
+                  </span>
+                </div>
               </div>
 
               {/* Tags */}
@@ -74,11 +62,40 @@ export default function UmkmList() {
                 <span className="bg-yellow text-blue px-1.5 py-1 rounded-full text-xs font-medium">
                   {item.priceRange ? `Rp ${item.priceRange}` : "N/A"}
                 </span>
+              {/* Content */}
+              <div className="p-3 flex flex-col gap-2.5">
+                {/* Name and Owner */}
+                <div>
+                  <h3 className="text-gray-900 font-bold text-sm sm:text-base leading-tight truncate">
+                    {item.name}
+                  </h3>
+                  <p className="text-gray-500 text-xs mt-0.5 truncate">
+                    {item.owner}
+                  </p>
+                </div>
+
+                {/* Tags */}
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="bg-blue text-yellow px-2.5 py-1 rounded-full text-xs font-medium">
+                    {item.category}
+                  </span>
+                  <span className="bg-yellow text-blue px-2.5 py-1 rounded-full text-xs font-medium">
+                    {item.priceRange || "N/A"}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
+          <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="text-gray-500 text-lg">Tidak ada UMKM yang sesuai dengan filter</p>
+          <p className="text-gray-400 text-sm mt-2">Coba ubah filter untuk melihat hasil lainnya</p>
+        </div>
+      )}
 
       {/* MODAL / DIALOG */}
       {isOpen && selectedUmkm && (
@@ -144,7 +161,7 @@ export default function UmkmList() {
                           {selectedUmkm.category}
                         </span>
                         <span className="bg-yellow text-blue font-medium px-3 py-1 rounded-full text-sm">
-                          {selectedUmkm.priceRange ? `Rp ${selectedUmkm.priceRange}` : "Price N/A"}
+                          {selectedUmkm.priceRange || "Price N/A"}
                         </span>
                       </div>
 
@@ -156,6 +173,7 @@ export default function UmkmList() {
                             <a
                               href={`https://wa.me/${selectedUmkm.contact.whatsapp}`}
                               target="_blank"
+                              rel="noopener noreferrer"
                               className="text-white font-semibold py-2 w-full text-center"
                             >
                               Whatsapp
@@ -166,6 +184,7 @@ export default function UmkmList() {
                             <a
                               href={`https://instagram.com/${selectedUmkm.contact.instagram}`}
                               target="_blank"
+                              rel="noopener noreferrer"
                               className="text-white font-semibold py-2 w-full text-center"
                             >
                               Instagram
@@ -205,7 +224,7 @@ export default function UmkmList() {
 
                 {/* Backstory */}
                 <div className="mb-6">
-                  <h3 className="font-semibold text-lg mb-2">The Story</h3>
+                  <h3 className="font-semibold text-lg mb-2">Behind The Brand</h3>
                   <p className="text-sm leading-relaxed">
                     {selectedUmkm.backStory || "No backstory available."}
                   </p>

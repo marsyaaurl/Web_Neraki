@@ -1,12 +1,16 @@
 "use client";
 import { useState } from "react";
 
-export default function Filter() {
+export default function Filter({ 
+  selectedCategories = [], 
+  setSelectedCategories = () => {}, 
+  selectedPrices = [], 
+  setSelectedPrices = () => {},
+  filteredCount = 0
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedPrices, setSelectedPrices] = useState([]);
 
-  const category = ["Makanan", "Pakaian", "Elektronik"];
+  const category = ["Makanan", "Pakaian", "Elektronik", "Craft"];
   const priceRange = ["Rp 0 - 50.000", "Rp 50.000 - 100.000", "Rp 100.000+"];
 
   const toggleCategory = (item) => {
@@ -28,7 +32,7 @@ export default function Filter() {
 
   return (
     <>
-      {/* Mobile Button - Shows above the list */}
+      {/* Mobile Button */}
       <div className="block lg:hidden w-full mb-6">
         <button
           onClick={() => setIsOpen(true)}
@@ -38,6 +42,11 @@ export default function Filter() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
           </svg>
           Filter
+          {(selectedCategories.length > 0 || selectedPrices.length > 0) && (
+            <span className="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">
+              {selectedCategories.length + selectedPrices.length}
+            </span>
+          )}
         </button>
 
         {/* Bottom Sheet */}
@@ -53,6 +62,9 @@ export default function Filter() {
               <div className="flex justify-between items-center mb-6 pb-4 border-b">
                 <div>
                   <h2 className="font-bold text-blue text-xl">Filter</h2>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {filteredCount} hasil ditemukan
+                  </p>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
@@ -127,7 +139,7 @@ export default function Filter() {
                   Reset
                 </button>
                 <button
-                  className="flex-1 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 shadow-md"
+                  className="flex-1 py-3 font-semibold rounded-lg border-2 bg-blue text-white hover:bg-gray-50"
                   onClick={() => setIsOpen(false)}
                 >
                   Terapkan
@@ -144,6 +156,9 @@ export default function Filter() {
           {/* Header */}
           <div className="mb-6 pb-5 border-b border-gray-100">
             <h2 className="font-bold text-blue text-xl">Filter</h2>
+            <p className="text-sm text-gray-500 mt-1">
+              {filteredCount} hasil ditemukan
+            </p>
           </div>
 
           {/* Categories */}
@@ -199,12 +214,12 @@ export default function Filter() {
           </div>
 
           {/* Reset Button */}
-            <button
-              onClick={resetFilters}
-              className="w-full py-2.5 text-sm text-blue-600 hover:bg-blue-50 font-semibold rounded-lg transition-all"
-            >
-              Reset Semua
-            </button>
+          <button
+            onClick={resetFilters}
+            className="w-full py-2.5 text-sm text-blue-600 hover:bg-blue-50 font-semibold rounded-lg transition-all"
+          >
+            Reset Semua
+          </button>
         </div>
       </div>
 
