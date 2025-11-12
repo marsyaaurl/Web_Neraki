@@ -1,3 +1,6 @@
+"use client";
+import { useState, useMemo } from "react";
+import { umkm } from "../data/umkm.js";
 import NavbarLoggedIn from "@/components/NavbarLoggedIn";
 import Map from "@/components/Map";
 import UmkmList from "@/components/UmkmList";
@@ -8,6 +11,22 @@ import KitDate from "@/components/KitDate";
 import ChallengeCard from "@/components/ChallengeCard";
 
 export default function Home() {
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedPrices, setSelectedPrices] = useState([]);
+
+    // Filter logic
+    const filteredData = useMemo(() => {
+        return umkm.filter(item => {
+            const categoryMatch = selectedCategories.length === 0 || 
+                                 selectedCategories.includes(item.category);
+            
+            const priceMatch = selectedPrices.length === 0 || 
+                              selectedPrices.includes(item.priceRange);
+            
+            return categoryMatch && priceMatch;
+        });
+    }, [selectedCategories, selectedPrices]);
+
     return (
         <>
             {/* Navbar */}
@@ -37,8 +56,14 @@ export default function Home() {
                     </h4>
                 </div>
                 <div className="flex flex-col md:flex-row gap-6 w-full max-w-7xl mx-auto">
-                    <Filter />
-                    <UmkmList />
+                    <Filter 
+                        selectedCategories={selectedCategories}
+                        setSelectedCategories={setSelectedCategories}
+                        selectedPrices={selectedPrices}
+                        setSelectedPrices={setSelectedPrices}
+                        filteredCount={filteredData.length}
+                    />
+                    <UmkmList umkmData={filteredData} />
                 </div>
             </div>
 
