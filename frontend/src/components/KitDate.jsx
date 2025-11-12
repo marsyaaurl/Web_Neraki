@@ -113,7 +113,7 @@ export default function KitDate() {
       >
         <div className="bg-[#FFF9DA] rounded-2xl w-full p-6 pb-0 relative overflow-hidden border-l-8 border-yellowHover">
           <h1 className="text-yellowHover font-bold text-2xl mb-1 relative z-10">
-            Perfect Kit Date
+            Kit Date Seru
           </h1>
           <p className="text-yellowHover text-lg mb-4 relative z-10">
             Rencana hari ini dari kami untukmu!

@@ -54,14 +54,6 @@ export default function UmkmList({ umkmData = [] }) {
                 </div>
               </div>
 
-              {/* Tags */}
-              <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="bg-blue text-yellow px-1.5 py-1 rounded-full text-xs font-medium">
-                  {item.category}
-                </span>
-                <span className="bg-yellow text-blue px-1.5 py-1 rounded-full text-xs font-medium">
-                  {item.priceRange ? `Rp ${item.priceRange}` : "N/A"}
-                </span>
               {/* Content */}
               <div className="p-3 flex flex-col gap-2.5">
                 {/* Name and Owner */}
@@ -88,22 +80,34 @@ export default function UmkmList({ umkmData = [] }) {
           ))}
         </div>
       ) : (
+        // Empty state
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
-          <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg
+            className="w-16 h-16 mx-auto text-gray-300 mb-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
-          <p className="text-gray-500 text-lg">Tidak ada UMKM yang sesuai dengan filter</p>
-          <p className="text-gray-400 text-sm mt-2">Coba ubah filter untuk melihat hasil lainnya</p>
+          <p className="text-gray-500 text-lg">
+            Tidak ada UMKM yang sesuai dengan filter
+          </p>
+          <p className="text-gray-400 text-sm mt-2">
+            Coba ubah filter untuk melihat hasil lainnya
+          </p>
         </div>
       )}
 
       {/* MODAL / DIALOG */}
       {isOpen && selectedUmkm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div 
-            className="relative max-w-4xl w-full"
-            style={{ perspective: "1000px" }}
-          >
+          <div className="relative max-w-4xl w-full" style={{ perspective: "1000px" }}>
             <div
               className={`relative transition-transform duration-700 ${
                 isFlipped ? "[transform:rotateY(180deg)]" : ""
@@ -118,7 +122,9 @@ export default function UmkmList({ umkmData = [] }) {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h2 className="font-bold text-2xl text-blue">{selectedUmkm.name}</h2>
+                    <h2 className="font-bold text-2xl text-blue">
+                      {selectedUmkm.name}
+                    </h2>
                     <p className="text-blue/80 text-sm">{selectedUmkm.owner}</p>
                   </div>
                   <button
@@ -150,10 +156,14 @@ export default function UmkmList({ umkmData = [] }) {
                       </p>
 
                       <div className="flex flex-row gap-x-2">
-                        <MapPin size={20}/>
-                        <h4 className="font-semibold text-md mb-1">{selectedUmkm.shortloc}</h4>
+                        <MapPin size={20} />
+                        <h4 className="font-semibold text-md mb-1">
+                          {selectedUmkm.shortloc}
+                        </h4>
                       </div>
-                      <p className="text-sm text-gray-500 mb-4">{selectedUmkm.location}</p>
+                      <p className="text-sm text-gray-500 mb-4">
+                        {selectedUmkm.location}
+                      </p>
 
                       {/* Category & Price */}
                       <div className="flex gap-2 flex-wrap mb-4">
@@ -169,7 +179,10 @@ export default function UmkmList({ umkmData = [] }) {
                       <div className="flex flex-col gap-3 mt-4">
                         <div className="flex gap-3">
                           <div className="bg-green-500 rounded-xl w-fit flex flex-row gap-x-2 justify-center items-center px-5 hover:bg-green-200">
-                            <FontAwesomeIcon icon={faWhatsapp} className="text-white text-lg" />
+                            <FontAwesomeIcon
+                              icon={faWhatsapp}
+                              className="text-white text-lg"
+                            />
                             <a
                               href={`https://wa.me/${selectedUmkm.contact.whatsapp}`}
                               target="_blank"
@@ -180,7 +193,10 @@ export default function UmkmList({ umkmData = [] }) {
                             </a>
                           </div>
                           <div className="bg-pink-500 rounded-xl w-fit flex flex-row gap-x-2 justify-center items-center px-5 hover:bg-pink-200">
-                            <FontAwesomeIcon icon={faInstagram} className="text-white text-lg" />
+                            <FontAwesomeIcon
+                              icon={faInstagram}
+                              className="text-white text-lg"
+                            />
                             <a
                               href={`https://instagram.com/${selectedUmkm.contact.instagram}`}
                               target="_blank"
@@ -191,7 +207,10 @@ export default function UmkmList({ umkmData = [] }) {
                             </a>
                           </div>
                         </div>
-                        <button className="bg-blue text-yellow font-semibold py-2 rounded-xl hover:bg-blue/60" onClick={() => setIsFlipped(true)}>
+                        <button
+                          className="bg-blue text-yellow font-semibold py-2 rounded-xl hover:bg-blue/60"
+                          onClick={() => setIsFlipped(true)}
+                        >
                           Flip
                         </button>
                       </div>
@@ -205,13 +224,15 @@ export default function UmkmList({ umkmData = [] }) {
                 className="absolute inset-0 bg-white rounded-3xl p-6 md:p-10 shadow-xl overflow-y-auto"
                 style={{
                   backfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)"
+                  transform: "rotateY(180deg)",
                 }}
               >
                 {/* Header */}
                 <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h2 className="font-bold text-2xl text-blue">{selectedUmkm.name}</h2>
+                    <h2 className="font-bold text-2xl text-blue">
+                      {selectedUmkm.name}
+                    </h2>
                     <p className="text-blue/80 text-sm">Backstory</p>
                   </div>
                   <button
