@@ -1,5 +1,272 @@
 "use-client";
 import { CircleUser, Image, Send } from "lucide-react";
+import { useState } from "react";
+
+export default function ChallengePost({
+  username = "John Doe",
+  caption = " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  hashtags = "#UMKM #Neraki #Enak",
+  imgUser = "",
+  userNameComment = "Jane Doe",
+  userComment = "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  imgSrc = "",
+  imgContent = "",
+  currentUserProfilePic = "/path/to/default/avatar.jpg",
+  currentUserName = "Railly_1",
+  isNewPost = false,
+}) {
+  const [commentText, setCommentText] = useState("");
+  const [comments, setComments] = useState(
+    !isNewPost && userComment
+      ? [
+          {
+            userName: userNameComment,
+            comment: userComment,
+            imgSrc: imgUser,
+          },
+        ]
+      : []
+  );
+
+  const handleCommentChange = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  const handleAddComment = () => {
+    if (commentText.trim()) {
+      const newComment = {
+        userName: currentUserName,
+        comment: commentText,
+        imgSrc: currentUserProfilePic,
+      };
+      setComments([...comments, newComment]);
+      setCommentText("");
+    }
+  };
+
+  return (
+    <div className=" flex flex-row gap-6 lg:gap-7">
+      <div className=" w-fit h-fit flex justify-center rounded-full">
+        <img
+          src={imgSrc}
+          width={65}
+          height={65}
+          className=" flex justify-center rounded-full"
+        />
+      </div>
+
+      <div
+        className="w-full px-8 py-6 backdrop-blur-md rounded-3xl"
+        style={{ boxShadow: "0 0 7px rgba(0, 0, 0, 0.1)" }}
+      >
+        <div className=" gap-4 items-center flex flex-col lg:flex-row ">
+          <div className="w-full lg:w-2/5 h-64 rounded-2xl flex  justify-center">
+            <img src={imgContent} sizes="100%" className=" rounded-xl" />
+          </div>
+          <div className=" w-full flex flex-col justify-between gap-4">
+            <div className="flex flex-col gap-2">
+              <h1 className=" font-semibold text-xl text-blue">{username}</h1>
+
+              <div className=" flex flex-col gap-1">
+                <p>{caption}</p>
+                <p className=" font-medium">{hashtags}</p>
+              </div>
+            </div>
+
+            <hr className="" />
+
+            {!isNewPost && comments.length > 0 && (
+              <div className="px-3 rounded-xl w-full flex items-center">
+                <div className="flex flex-col gap-y-3">
+                  <h2 className="font-semibold text-yellowHover">Comments</h2>
+                  {comments.map((comment, index) => (
+                    <div key={index} className="flex flex-row gap-4 ">
+                      <div className=" w-fit h-fit border-2 border-red  rounded-full">
+                        <img
+                          src={comment.imgSrc}
+                          width={45}
+                          height={45}
+                          className=" flex justify-center rounded-full"
+                        />
+                      </div>
+                      <div>
+                        <h1 className=" font-medium text-base text-blue">
+                          {comment.userName}
+                        </h1>
+
+                        <div className=" flex flex-col gap-3 text-sm">
+                          <p>{comment.comment}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className=" flex gap-5 items-center">
+              <div className=" border-2 border-blue px-4 py-3.5 rounded-full w-full h-15 ">
+                <input
+                  type="text"
+                  placeholder="Comment"
+                  value={commentText}
+                  onChange={handleCommentChange}
+                  className=" w-full outline-none placeholder:text-blueHover"
+                />
+              </div>
+
+              <div
+                className=" bg-blue p-4 rounded-full cursor-pointer w-fit hover:shadow-lg hover:shadow-blueHover transition-shadow"
+                onClick={handleAddComment}
+              >
+                <Send size={24} color="#fff" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+{
+  /*"use-client";
+import { CircleUser, Image, Send } from "lucide-react";
+import { useState } from "react";
+
+export default function ChallengePost({
+  username = "John Doe",
+  caption = " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  hashtags = "#UMKM #Neraki #Enak",
+  imgUser = "",
+  userNameComment = "Jane Doe",
+  userComment = "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+  imgSrc = "",
+  imgContent = "",
+  currentUserProfilePic = "/path/to/default/avatar.jpg",
+  currentUserName = "Railly_1",
+  isNewPost = false,
+}) {
+  const [commentText, setCommentText] = useState("");
+  const [comments, setComments] = useState(
+    !isNewPost && userComment
+      ? [
+          {
+            userName: userNameComment,
+            comment: userComment,
+            imgSrc: imgUser,
+          },
+        ]
+      : []
+  );
+
+  const handleCommentChange = (e) => {
+    setCommentText(e.target.value);
+  };
+
+  const handleAddComment = () => {
+    if (commentText.trim()) {
+      const newComment = {
+        userName: currentUserName,
+        comment: commentText,
+        imgSrc: currentUserProfilePic,
+      };
+      setComments([...comments, newComment]);
+      setCommentText("");
+    }
+  };
+
+  return (
+    <div className=" flex flex-row gap-6 lg:gap-7">
+      <div className=" w-fit h-fit flex justify-center rounded-full">
+        <img
+          src={imgSrc}
+          width={65}
+          height={65}
+          className=" flex justify-center rounded-full"
+        />
+      </div>
+
+      <div
+        className="w-full px-8 py-6 backdrop-blur-md rounded-3xl"
+        style={{ boxShadow: "0 0 7px rgba(0, 0, 0, 0.1)" }}
+      >
+        <div className=" gap-4 items-center flex flex-col lg:flex-row ">
+          <div className="w-full lg:w-2/5 h-64 rounded-2xl flex  justify-center">
+            <img src={imgContent} sizes="100%" className=" rounded-xl" />
+          </div>
+          <div className=" w-full flex flex-col justify-between gap-4">
+            <div className="flex flex-col gap-2">
+              <h1 className=" font-semibold text-xl text-blue">{username}</h1>
+
+              <div className=" flex flex-col gap-1">
+                <p>{caption}</p>
+                <p className=" font-medium">{hashtags}</p>
+              </div>
+            </div>
+
+            <hr className="" />
+
+            {comments.length > 0 && (
+              <div className="px-3 rounded-xl w-full flex items-center">
+                <div className="flex flex-col gap-y-3">
+                  <h2 className="font-semibold text-yellowHover">Comments</h2>
+                  {comments.map((comment, index) => (
+                    <div key={index} className="flex flex-row gap-4 ">
+                      <div className=" w-fit h-fit border-2 border-red  rounded-full">
+                        <img
+                          src={comment.imgSrc}
+                          width={45}
+                          height={45}
+                          className=" flex justify-center rounded-full"
+                        />
+                      </div>
+                      <div>
+                        <h1 className=" font-medium text-base text-blue">
+                          {comment.userName}
+                        </h1>
+
+                        <div className=" flex flex-col gap-3 text-sm">
+                          <p>{comment.comment}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {!isNewPost && (
+              <div className=" flex gap-5 items-center">
+                <div className=" border-2 border-blue px-4 py-3.5 rounded-full w-full h-15 ">
+                  <input
+                    type="text"
+                    placeholder="Comment"
+                    value={commentText}
+                    onChange={handleCommentChange}
+                    className=" w-full outline-none placeholder:text-blueHover"
+                  />
+                </div>
+
+                <div
+                  className=" bg-blue p-4 rounded-full cursor-pointer w-fit hover:shadow-lg hover:shadow-blueHover transition-shadow"
+                  onClick={handleAddComment}
+                >
+                  <Send size={24} color="#fff" />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}*/
+}
+
+{
+  /*"use-client";
+import { CircleUser, Image, Send } from "lucide-react";
 
 export default function ChallengePost({
   username = "John Doe",
@@ -13,12 +280,11 @@ export default function ChallengePost({
 }) {
   return (
     <div className=" flex flex-row gap-6 lg:gap-7">
-      <div className=" w-fit h-fit flex justify-center rounded-full">
+      <div className=" w-auto h-auto flex justify-center rounded-full">
         <img
           src={imgSrc}
-          width={65}
-          height={65}
-          className=" flex justify-center rounded-full"
+         
+          className=" w-16 h-14 flex justify-center rounded-full"
         />
       </div>
 
@@ -46,9 +312,8 @@ export default function ChallengePost({
                   <div className=" w-fit h-fit border-2 border-red  rounded-full">
                     <img
                       src={imgUser}
-                      width={45}
-                      height={45}
-                      className=" flex justify-center rounded-full"
+                      
+                      className="w-10 h-10 flex justify-center rounded-full"
                     />
                   </div>
                   <div>
@@ -82,4 +347,5 @@ export default function ChallengePost({
       </div>
     </div>
   );
+}*/
 }

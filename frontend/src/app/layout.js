@@ -1,3 +1,4 @@
+import { SearchProvider } from "@/components/SearchContext";
 import "./globals.css";
 import { Poppins, Rubik_Maps } from "next/font/google";
 
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <SearchProvider>{children}</SearchProvider>
+      </body>
     </html>
   );
 }
