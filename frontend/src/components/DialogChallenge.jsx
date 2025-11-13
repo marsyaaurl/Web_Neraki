@@ -2,8 +2,53 @@
 
 import { X } from "lucide-react";
 import Button from "./Button";
+import { useState, useEffect } from "react";
 
-export default function DialogChallenge({ onClose }) {
+export default function DialogChallenge({
+  onClose,
+  onSubmit,
+  userName = "Railly_1",
+}) {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [captionText, setCaptionText] = useState("");
+  const [userProfilePic, setUserProfilePic] = useState(
+    "/path/to/default/avatar.jpg"
+  );
+
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem("avatar");
+    if (savedAvatar) {
+      setUserProfilePic(savedAvatar);
+    }
+  }, []);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleCaptionChange = (e) => {
+    setCaptionText(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (selectedFile && captionText.trim()) {
+      const newPost = {
+        username: userName,
+        caption: captionText,
+        imgContent: URL.createObjectURL(selectedFile),
+        hashtags: "#UMKM #Neraki",
+        imgUser: userProfilePic,
+        userNameComment: "",
+        userComment: "",
+        imgSrc: userProfilePic,
+      };
+      onSubmit(newPost);
+      onClose();
+    } else {
+      alert("Harap pilih file dan isi caption.");
+    }
+  };
+
   return (
     <main className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
       <section
@@ -27,9 +72,13 @@ export default function DialogChallenge({ onClose }) {
 
         <div className=" flex gap-2 items-center">
           <div className=" w-fit h-fit border-2 border-red rounded-full flex justify-center">
-            <img  width={34} height={34} className=" outline-none"/>
+            <img
+              src={userProfilePic}
+             
+              className=" w-14 h-14 outline-none rounded-full"
+            />
           </div>
-          <h1 className=" text-lg font-semibold">Railly_1</h1>
+          <h1 className=" text-lg font-semibold">{userName}</h1>
         </div>
 
         {/* Form */}
@@ -42,6 +91,8 @@ export default function DialogChallenge({ onClose }) {
             <input
               id="upload"
               type="file"
+              accept="image/*"
+              onChange={handleFileChange}
               className="text-sm text-blue"
               aria-label="Unggah gambar"
             />
@@ -57,12 +108,283 @@ export default function DialogChallenge({ onClose }) {
               type="text"
               rows={6}
               placeholder="Tambahkan keterangan..."
+              value={captionText}
+              onChange={handleCaptionChange}
               className=" border-2 border-x-blueLight py-3 px-3 outline-none  w-full rounded-md  placeholder:text-blueHover text-blue"
               aria-label="Tambahkan keterangan"
             />
           </div>
 
           {/* Submit Button */}
+          <footer>
+            <Button
+              label="Bagikan"
+              variant="blue"
+              className="py-2.5 px-3 w-full"
+              onClick={handleSubmit}
+            />
+          </footer>
+        </form>
+      </section>
+    </main>
+  );
+}
+
+{
+  /*"use client";
+
+import { X } from "lucide-react";
+import Button from "./Button";
+import { useState } from "react";
+
+export default function DialogChallenge({ onClose, onSubmit, userProfilePic = "/path/to/default/avatar.jpg", userName = "Railly_1" }) {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [captionText, setCaptionText] = useState("");
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleCaptionChange = (e) => {
+    setCaptionText(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (selectedFile && captionText.trim()) {
+      const newPost = {
+        username: userName,
+        caption: captionText,
+        imgContent: URL.createObjectURL(selectedFile),
+        hashtags: "#UMKM #Neraki",
+        imgUser: userProfilePic,
+        userNameComment: "",
+        userComment: "",
+        imgSrc: userProfilePic,
+      };
+      onSubmit(newPost);
+      onClose();
+    } else {
+      alert("Harap pilih file dan isi caption.");
+    }
+  };
+
+  return (
+    <main className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
+      <section
+        className="relative bg-white flex flex-col py-6 px-8 md:px-10 rounded-3xl w-11/12 max-w-lg gap-6  shadow-xl"
+        aria-label="Formulir Post Baru"
+      >
+        {/* Close Button 
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Tutup dialog"
+          className="absolute top-4 right-4 text-red-700 hover:text-red-900 transition-colors"
+        >
+          <X size={28} color="#8c2b02" />
+        </button>
+
+        {/* Header 
+        <header className="text-center">
+          <h2 className="text-3xl font-bold text-blue">New Post</h2>
+        </header>
+
+        <div className=" flex gap-2 items-center">
+          <div className=" w-fit h-fit border-2 border-red rounded-full flex justify-center">
+            <img src={userProfilePic} width={34} height={34} className=" outline-none rounded-full"/>
+          </div>
+          <h1 className=" text-lg font-semibold">{userName}</h1>
+        </div>
+
+        {/* Form 
+        <form className="flex flex-col gap-5" aria-label="Form Post Baru">
+          {/* Upload Area 
+          <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
+            <label htmlFor="upload" className="sr-only">
+              Unggah Gambar
+            </label>
+            <input
+              id="upload"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="text-sm text-blue"
+              aria-label="Unggah gambar"
+            />
+          </div>
+
+          {/* Caption Input 
+          <div className="flex flex-col gap-1">
+            <label htmlFor="caption" className="sr-only">
+              Keterangan
+            </label>
+            <textarea
+              id="caption"
+              type="text"
+              rows={6}
+              placeholder="Tambahkan keterangan..."
+              value={captionText}
+              onChange={handleCaptionChange}
+              className=" border-2 border-x-blueLight py-3 px-3 outline-none  w-full rounded-md  placeholder:text-blueHover text-blue"
+              aria-label="Tambahkan keterangan"
+            />
+          </div>
+
+          {/* Submit Button 
+          <footer>
+            <Button
+              label="Bagikan"
+              variant="blue"
+              className="py-2.5 px-3 w-full"
+              onClick={handleSubmit}
+            />
+          </footer>
+        </form>
+      </section>
+    </main>
+  );
+}*/
+}
+
+{
+  /*"use client";
+
+import { X } from "lucide-react";
+import Button from "./Button";
+import { useState } from "react";
+
+export default function DialogChallenge({ onClose, onSubmit }) {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [captionText, setCaptionText] = useState("");
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleCaptionChange = (e) => {
+    setCaptionText(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (selectedFile && captionText.trim()) {
+      const newPost = {
+        username: "Railly_1",
+        caption: captionText,
+        imgContent: URL.createObjectURL(selectedFile),
+        hashtags: "#UMKM #Neraki",
+
+        userNameComment: "",
+        userComment: "",
+      };
+      onSubmit(newPost);
+      onClose();
+    } else {
+      alert("Harap pilih file dan isi caption.");
+    }
+  };
+
+  return (
+    <main className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
+      <section
+        className="relative bg-white flex flex-col py-6 px-8 md:px-10 rounded-3xl w-11/12 max-w-lg gap-6  shadow-xl"
+        aria-label="Formulir Post Baru"
+      >
+        {/* Close Button
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Tutup dialog"
+          className="absolute top-4 right-4 text-red-700 hover:text-red-900 transition-colors"
+        >
+          <X size={28} color="#8c2b02" />
+        </button>
+
+        {/* Header
+        <header className="text-center">
+          <h2 className="text-3xl font-bold text-blue">New Post</h2>
+        </header>
+
+        <div className=" flex gap-2 items-center">
+          <div className=" w-fit h-fit border-2 border-red rounded-full flex justify-center">
+            <img width={34} height={34} className=" outline-none" />
+          </div>
+          <h1 className=" text-lg font-semibold">Railly_1</h1>
+        </div>
+
+        {/* Form 
+        <form className="flex flex-col gap-5" aria-label="Form Post Baru">
+          {/* Upload Area
+          <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
+            <label htmlFor="upload" className="sr-only">
+              Unggah Gambar
+            </label>
+            <input
+              id="upload"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="text-sm text-blue"
+              aria-label="Unggah gambar"
+            />
+          </div>
+
+          {/* Caption Input 
+          <div className="flex flex-col gap-1">
+            <label htmlFor="caption" className="sr-only">
+              Keterangan
+            </label>
+            <textarea
+              id="caption"
+              type="text"
+              rows={6}
+              placeholder="Tambahkan keterangan..."
+              value={captionText}
+              onChange={handleCaptionChange}
+              className=" border-2 border-x-blueLight py-3 px-3 outline-none  w-full rounded-md  placeholder:text-blueHover text-blue"
+              aria-label="Tambahkan keterangan"
+            />
+          </div>
+
+          {/* Submit Button 
+          <footer>
+            <Button
+              label="Bagikan"
+              variant="blue"
+              className="py-2.5 px-3 w-full"
+              onClick={handleSubmit}
+            />
+          </footer>
+
+          {/*<form className="flex flex-col gap-5" aria-label="Form Post Baru">
+          {/* Upload Area 
+          <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
+            <label htmlFor="upload" className="sr-only">
+              Unggah Gambar
+            </label>
+            <input
+              id="upload"
+              type="file"
+              className="text-sm text-blue"
+              aria-label="Unggah gambar"
+            />
+          </div>
+
+          {/* Caption Input 
+          <div className="flex flex-col gap-1">
+            <label htmlFor="caption" className="sr-only">
+              Keterangan
+            </label>
+            <textarea
+              id="caption"
+              type="text"
+              rows={6}
+              placeholder="Tambahkan keterangan..."
+              className=" border-2 border-x-blueLight py-3 px-3 outline-none  w-full rounded-md  placeholder:text-blueHover text-blue"
+              aria-label="Tambahkan keterangan"
+            />
+          </div>
+
+          {/* Submit Button *
           <footer>
             <Button
               label="Bagikan"

@@ -21,6 +21,13 @@ import Niekting5 from "../../../public/assets/images/Niekting5.jpg";
 import Niekting6 from "../../../public/assets/images/Niekting6.jpg";
 import Niekting7 from "../../../public/assets/images/Niekting7.jpg";
 import Niekting8 from "../../../public/assets/images/Niekting8.jpg";
+import Mutdeparfums from "../../../public/assets/images/Mutdeparfums.png";
+import Mutdeparfums1 from "../../../public/assets/images/Mutdeparfums1.png";
+import Mutdeparfums2 from "../../../public/assets/images/Mutdeparfums2.png";
+import Mutdeparfums3 from "../../../public/assets/images/Mutdeparfums3.png";
+import Mutdeparfums4 from "../../../public/assets/images/Mutdeparfums4.png";
+import Mutdeparfums5 from "../../../public/assets/images/Mutdeparfums5.png";
+import Mutdeparfums6 from "../../../public/assets/images/Mutdeparfums6.png";
 
 export const umkm = [
   {
@@ -36,7 +43,7 @@ export const umkm = [
     },
     description:
       "Menjual berbagai macam aneka kerajinan tangan rajut, seperti gantungan kunci, bando, bros, tas, dan lain-lain.",
-    priceRange: "",
+    priceRange: "25.000 - 35.000",
     backStory:
       "Perjalanan usaha rajut saya dimulai dari emperan Fatahillah, Kota Tua, tahun 2010. Di tengah hiruk-pikuk wisatawan dan suasana heritage, saya menjajakan kerajinan tangan dengan penuh semangat. Lima tahun kemudian, saya bergabung sebagai UKM binaan Dekranasda—sebuah langkah besar yang membuka banyak pintu pembinaan dan peluang. Namun, jalan usaha tak selalu mulus. Pandemi COVID-19 memaksa saya berhenti selama tiga tahun. Di waktu yang sama, saya menjalani peran baru sebagai ibu dari dua anak, masing-masing lahir dengan jeda tiga tahun. Fokus saya pun bergeser, dan selama itu saya tidak aktif mengikuti bazar atau kegiatan UKM. Sebelumnya, saya sempat mendapat kios dari Walikota Jakarta Utara di Mangga Dua Pasar Pagi lantai 5, tapi hanya bertahan satu tahun karena tidak diperpanjang oleh Sudin. Saya juga pernah mengelola kios di Fatahillah selama 1,5 tahun, namun harus berhenti karena kesibukan anak masuk sekolah. Kini, setelah melewati berbagai fase kehidupan, saya kembali aktif. Dengan semangat baru dan pengalaman panjang, saya siap melanjutkan usaha rajut ini—membawa cerita, warna, dan kehangatan dalam setiap karya.",
     photos: [WaroengRajutFiah1, WaroengRajutFiah2],
@@ -61,7 +68,7 @@ export const umkm = [
     },
     description:
       "Pannatown adalah usaha dessert dan minuman yang bisa dipesan online maupun untuk acara spesial. Kami juga menyediakan dessert table cantik untuk wedding, ulang tahun, dan berbagai event lainnya—siap mempermanis momen berharga Anda.",
-    priceRange: "",
+    priceRange: "5.000 - 300.000",
     backStory:
       "Pannatown lahir di tahun 2019, bukan dari rencana besar, tapi dari titik balik kehidupan. Saat pandemi melanda dan usaha pertama saya terpaksa berhenti, saya memilih untuk bangkit lewat hal yang sederhana: makanan penutup dan minuman yang bisa menghadirkan kebahagiaan kecil di tengah masa sulit. Berawal dari dapur rumah, saya mulai menjual dessert secara online. Tak disangka, dukungan datang dari berbagai arah—termasuk dari program UMKM pemerintah yang sangat membantu saya bertahan dan berkembang. Pannatown pun resmi terdaftar sebagai UMKM, dan sejak itu, saya merasa benar-benar diberkati. Banyak yang percaya, banyak yang mendukung. Kini, Pannatown tak hanya hadir secara online, tapi juga mempermanis berbagai acara lewat dessert table untuk wedding, ulang tahun, dan event lainnya. Dari masa jatuh, lahirlah sesuatu yang manis.",
     photos: [
@@ -94,7 +101,7 @@ export const umkm = [
     },
     description:
       "Asinan Fermentasi Niekting adalah usaha kuliner yang mengusung konsep fermentasi alami dalam sajian asinan, menghadirkan sensasi dan kesehatan di setiap gigitannya.",
-    priceRange: "",
+    priceRange: "40.000 - 75.000",
     backStory:
       "Berawal dari dapur rumahan dan keresahan akan makanan sehat yang minim pengawet, Niekting lahir sebagai pelopor asinan fermentasi alami yang tak hanya memanjakan lidah, tapi juga menjaga kesehatan pencernaan. Mengusung resep tradisional turun-temurun yang dikombinasikan dengan sentuhan modern dan inovatif, Niekting menyajikan perpaduan segar antara buah dan sayur dalam kemasan yang praktis dan penuh manfaat probiotik.",
     photos: [
@@ -117,6 +124,41 @@ export const umkm = [
     dateTypes: ["romantic", "adventure", "foodie", "chill"],
     mealTime: ["lunch", "dinner", "brunch"],
   },
+  {
+    image: Mutdeparfums,
+    name: "Mutdeparfums",
+    owner: "Muhamad Najwan",
+    category: "Kosmetik",
+    shortloc: "Online",
+    location: "Online",
+    contact: {
+      whatsapp: "",
+      instagram: "mutdeparfums",
+    },
+    description:
+      "MutDeParfums adalah toko parfum online yang menjual parfum original dalam bentuk decant. Kami menyediakan berbagai aroma dari merek ternama dengan kemasan kecil yang praktis dan harga terjangkau.",
+    priceRange: "20.000 - 50.000",
+    backStory:
+      "MutDeParfums lahir dari tugas mata kuliah Technopreneur—sebuah ide sederhana: bagaimana kalau orang bisa mencoba parfum premium tanpa harus beli botol penuh? Dari sana, tercetuslah scenthub.parfums. Awalnya hanya proyek kampus, tapi seiring waktu, jadi passion. Dari eksperimen kecil, tumbuhlah MutDeParfums sebagai UMKM yang terus berbagi wangi dan pengalaman baru lewat setiap botol decant-nya.",
+    photos: [
+      Mutdeparfums1,
+      Mutdeparfums2,
+      Mutdeparfums3,
+      Mutdeparfums4,
+      Mutdeparfums5,
+      Mutdeparfums6,
+    ],
+    atmospherePhotos: [],
+    mood: {
+      energy: ["medium", "high"],
+      vibe: ["social", "comforting"],
+      setting: ["indoor"],
+    },
+    tags: ["hearty", "authentic"],
+    dateTypes: ["romantic", "adventure", "chill"],
+    mealTime: [],
+  },
+  //Belum valid
   {
     image: NasiKokoh,
     name: "Nasi Kokoh",

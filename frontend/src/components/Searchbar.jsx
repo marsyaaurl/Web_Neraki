@@ -1,8 +1,11 @@
 "use client";
 
 import { Search } from "lucide-react";
+import { useSearch } from "./SearchContext";
 
 export default function Searchbar({ variant, size, ...props }) {
+  const { searchQuery, setSearchQuery } = useSearch();
+
   const variants = {
     blue: "border-blue",
   };
@@ -16,6 +19,10 @@ export default function Searchbar({ variant, size, ...props }) {
   const variantClass = variants[variant];
   const sizeClass = sizes[size];
 
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <form
       className={`flex items-center gap-3 border-2 rounded-full px-4 py-2 bg-white ${variantClass} ${sizeClass}`}
@@ -25,6 +32,8 @@ export default function Searchbar({ variant, size, ...props }) {
       <input
         type="text"
         placeholder="Search"
+        value={searchQuery}
+        onChange={handleInputChange}
         className="  outline-none bg-transparent placeholder-blueHover text-lg w-full"
       />
     </form>
