@@ -5,7 +5,6 @@ import DialogChallenge from "@/components/DialogChallenge";
 import NavbarLoggedIn from "@/components/NavbarLoggedIn";
 import { Plus } from "lucide-react";
 import { useState, useEffect } from "react";
-import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function Challenge() {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,8 +66,7 @@ export default function Challenge() {
 
   return (
     <>
-      <ProtectedRoute>
-        <NavbarLoggedIn />
+      <NavbarLoggedIn />
 
         <div className="min-h-screen flex flex-col justify-between pt-32 mx-8 lg:mx-24 pb-9 gap-10">
           {/* CTA */}
@@ -124,7 +122,6 @@ export default function Challenge() {
             currentUserAvatar={currentUserAvatar}
           />
         )}
-      </ProtectedRoute>
     </>
   );
 }
