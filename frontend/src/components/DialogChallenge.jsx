@@ -81,7 +81,37 @@ export default function DialogChallenge({ onClose, onSubmit }) {
         </div>
 
         <form className="flex flex-col gap-5">
-          <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
+          <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow relative">
+            {selectedFile && (
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt="Preview"
+                className="absolute inset-0 w-full h-full object-cover rounded-xl"
+              />
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="text-sm text-blue relative z-10"
+            />
+          </div>
+
+          <textarea
+            rows={6}
+            placeholder="Tambahkan keterangan..."
+            value={captionText}
+            onChange={handleCaptionChange}
+            className="border-2 border-x-blueLight py-3 px-3 outline-none w-full rounded-md placeholder:text-blueHover text-blue"
+          />
+
+          <Button
+            label="Bagikan"
+            variant="blue"
+            className="py-2.5 px-3 w-full"
+            onClick={handleSubmit}
+          />
+          {/*<div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
             <input
               type="file"
               accept="image/*"
@@ -103,7 +133,7 @@ export default function DialogChallenge({ onClose, onSubmit }) {
             variant="blue"
             className="py-2.5 px-3 w-full"
             onClick={handleSubmit}
-          />
+          />*/}
         </form>
       </section>
     </main>
