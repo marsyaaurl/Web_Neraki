@@ -8,7 +8,11 @@ import { faWhatsapp, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { useSearch } from "./SearchContext";
 import { useMemo } from "react";
 
-export default function UmkmList({ umkmData = [] }) {
+export default function UmkmList({ 
+  umkmData = [], 
+  selectedCategories = [], 
+  selectedPrices = [] 
+}) {
   
   const { searchQuery } = useSearch();
   const [selectedUmkm, setSelectedUmkm] = useState(null);
@@ -27,19 +31,37 @@ export default function UmkmList({ umkmData = [] }) {
     setIsFlipped(false);
   };
 
-  
   const filteredUmkmData = useMemo(() => {
-    if (!searchQuery) return umkmData;
-    return umkmData.filter(
-      (item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.shortloc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.location.toLowerCase().includes(searchQuery.toLowerCase())
+  let data = [...umkmData];
+
+  // 🔍 Search Query
+  if (searchQuery) {
+    data = data.filter((item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.shortloc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.location.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [umkmData, searchQuery]);
+  }
+
+  // 🟦 CATEGORY FILTER
+  if (selectedCategories.length > 0) {
+    data = data.filter((item) =>
+      selectedCategories.includes(item.category)
+    );
+  }
+
+  // 💰 PRICE FILTER — FIXED
+  if (selectedPrices.length > 0) {
+    data = data.filter((item) =>
+      selectedPrices.includes(item.priceRange)
+    );
+  }
+
+  return data;
+}, [umkmData, searchQuery, selectedCategories, selectedPrices]);
 
   return (
     <div className="flex-1">

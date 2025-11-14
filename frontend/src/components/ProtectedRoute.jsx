@@ -1,6 +1,6 @@
 {/*'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function ProtectedRoute({ children }) {
@@ -11,10 +11,12 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     if (!isLoading {/*&& !session) {
       router.push('/Login');
+    } else {
+      setLoading(false);
     }
   }, [{/*session, isLoading]);
 
-  if (isLoading || !session) {
+  if (loading) {
     return <div className="p-10 text-center">Loading...</div>;
   }
 

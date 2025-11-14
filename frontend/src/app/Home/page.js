@@ -11,7 +11,6 @@ import Footer from "@/components/FooterLandingPage";
 import KitDate from "@/components/KitDate";
 import ChallengeCard from "@/components/ChallengeCard";
 import { SearchProvider } from "@/components/SearchContext";
-//import ProtectedRoute from "@/components/ProtectedRoute.jsx";
 
 export default function Home() {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -113,7 +112,11 @@ export default function Home() {
               setSelectedPrices={setSelectedPrices}
               filteredCount={filteredData.length}
             />
-            <UmkmList umkmData={filteredData} />
+            <UmkmList 
+              umkmData={umkm} 
+              selectedCategories={selectedCategories}
+              selectedPrices={selectedPrices}
+            />
           </div>
         </div>
 
