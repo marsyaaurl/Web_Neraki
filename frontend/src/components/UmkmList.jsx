@@ -4,8 +4,13 @@ import { MapPin } from "lucide-react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp, faInstagram } from "@fortawesome/free-brands-svg-icons";
+//menambahkan import untuk search
+import { useSearch } from "./SearchContext";
+import { useMemo } from "react";
 
 export default function UmkmList({ umkmData = [] }) {
+  //tambah searchQuery
+  const { searchQuery } = useSearch();
   const [selectedUmkm, setSelectedUmkm] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -22,11 +27,25 @@ export default function UmkmList({ umkmData = [] }) {
     setIsFlipped(false);
   };
 
+  // Filter UMKM berdasarkan searchQuery
+  const filteredUmkmData = useMemo(() => {
+    if (!searchQuery) return umkmData;
+    return umkmData.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.shortloc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.location.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [umkmData, searchQuery]);
+
   return (
     <div className="flex-1">
-      {umkmData.length > 0 ? (
+      {filteredUmkmData.length > 0 ? (
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {umkmData.map((item) => (
+          {filteredUmkmData.map((item) => (
             <div
               key={item.name}
               className="bg-white rounded-2xl backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-fit cursor-pointer"
@@ -107,7 +126,10 @@ export default function UmkmList({ umkmData = [] }) {
       {/* MODAL / DIALOG */}
       {isOpen && selectedUmkm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="relative max-w-4xl w-full" style={{ perspective: "1000px" }}>
+          <div
+            className="relative max-w-4xl w-full"
+            style={{ perspective: "1000px" }}
+          >
             <div
               className={`relative transition-transform duration-700 ${
                 isFlipped ? "[transform:rotateY(180deg)]" : ""
@@ -150,9 +172,12 @@ export default function UmkmList({ umkmData = [] }) {
                   {/* Right: Info */}
                   <div className="flex flex-col justify-between w-full md:w-1/2">
                     <div>
-                      <h3 className="font-semibold text-lg mb-2">Description</h3>
+                      <h3 className="font-semibold text-lg mb-2">
+                        Description
+                      </h3>
                       <p className="text-sm leading-relaxed mb-4">
-                        {selectedUmkm.description || "No description available."}
+                        {selectedUmkm.description ||
+                          "No description available."}
                       </p>
 
                       <div className="flex flex-row gap-x-2">
@@ -211,7 +236,7 @@ export default function UmkmList({ umkmData = [] }) {
                           className="bg-blue text-yellow font-semibold py-2 rounded-xl hover:bg-blue/60"
                           onClick={() => setIsFlipped(true)}
                         >
-                          Flip
+                          Behind The Brand
                         </button>
                       </div>
                     </div>
@@ -245,7 +270,9 @@ export default function UmkmList({ umkmData = [] }) {
 
                 {/* Backstory */}
                 <div className="mb-6">
-                  <h3 className="font-semibold text-lg mb-2">Behind The Brand</h3>
+                  <h3 className="font-semibold text-lg mb-2">
+                    Behind The Brand
+                  </h3>
                   <p className="text-sm leading-relaxed">
                     {selectedUmkm.backStory || "No backstory available."}
                   </p>

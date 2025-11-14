@@ -10,7 +10,7 @@ export default function Filter({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const category = ["Makanan", "Pakaian", "Elektronik", "Craft"];
+  const category = ["Makanan", "Pakaian", "Elektronik", "Craft", "Kosmetik"];
   const priceRange = ["Rp 0 - 50.000", "Rp 50.000 - 100.000", "Rp 100.000+"];
 
   const toggleCategory = (item) => {
