@@ -71,7 +71,11 @@ export default function Home() {
               setSelectedPrices={setSelectedPrices}
               filteredCount={filteredData.length}
             />
-            <UmkmList umkmData={filteredData} />
+            <UmkmList 
+              umkmData={umkm} 
+              selectedCategories={selectedCategories}
+              selectedPrices={selectedPrices}
+            />
           </div>
         </div>
 
