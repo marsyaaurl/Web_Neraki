@@ -68,7 +68,7 @@ export default function Challenge() {
     <>
       <NavbarLoggedIn />
 
-      <div className="min-h-screen flex flex-col justify-between pt-32 mx-14 lg:mx-32 pb-9 gap-10">
+      <div className="min-h-screen flex flex-col justify-between pt-32 mx-8 lg:mx-24 pb-9 gap-10">
         {/* CTA */}
         <div className="flex flex-col gap-5">
           <h1 className="text-black font-bold text-3xl">
