@@ -4,14 +4,29 @@ import { CircleUser } from "lucide-react";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Bamboo from "../../public/assets/bamboo.webp"
-
+import Bamboo from "../../public/assets/bamboo.webp";
 
 export default function Dialog() {
   const [profileData, setProfileData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editableData, setEditableData] = useState({});
   const [avatar, setAvatar] = useState(null);
+  const [errors, setErrors] = useState({});
+
+  const monthNames = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
 
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
@@ -39,11 +54,60 @@ export default function Dialog() {
       ...editableData,
       [e.target.name]: e.target.value,
     });
+
+    if (errors[e.target.name]) {
+      setErrors({
+        ...errors,
+        [e.target.name]: "",
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (
+      !editableData.fullname ||
+      typeof editableData.fullname !== "string" ||
+      !/^[a-zA-Z\s]+$/.test(editableData.fullname.trim())
+    ) {
+      newErrors.fullname = "Nama lengkap harus berupa huruf dan spasi saja.";
+    }
+
+    if (!editableData.username || typeof editableData.username !== "string") {
+    }
+
+    const dobRegex = new RegExp(`^\\d{2} (${monthNames.join("|")}) \\d{4}$`);
+    if (!editableData.dob || !dobRegex.test(editableData.dob)) {
+      newErrors.dob =
+        "Tanggal lahir harus dalam format DD Month YYYY, contoh: 01 Januari 2000.";
+    }
+
+    if (!editableData.phonenum || !/^\d+$/.test(editableData.phonenum)) {
+      newErrors.phonenum = "Nomor telepon harus berupa angka.";
+    }
+
+    if (!editableData.email || !editableData.email.endsWith("@gmail.com")) {
+      newErrors.email = "Email harus berakhir dengan @gmail.com.";
+    }
+
+    if (
+      !editableData.address ||
+      typeof editableData.address !== "string" ||
+      editableData.address.trim() === ""
+    ) {
+      newErrors.address = "Alamat harus diisi.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSave = () => {
-    localStorage.setItem("user", JSON.stringify(editableData));
-    setIsEditing(false);
+    if (validateForm()) {
+      localStorage.setItem("user", JSON.stringify(editableData));
+      setIsEditing(false);
+    }
   };
 
   const handleAvatarUpload = (e) => {
@@ -66,7 +130,7 @@ export default function Dialog() {
   return (
     <main className="fixed inset-0 flex items-center justify-center overflow-auto">
       {/* Background image */}
-      <Image 
+      <Image
         src={Bamboo}
         alt="Background"
         className="absolute inset-0 w-full h-full object-cover"
@@ -94,14 +158,19 @@ export default function Dialog() {
                     {label}
                   </label>
                   {isEditing ? (
-                    <input
-                      id={key}
-                      type="text"
-                      name={key}
-                      value={editableData[key] || ""}
-                      onChange={handleChange}
-                      className="px-3 py-2 border bg-blueLight border-blue outline-none rounded-md text-blue"
-                    />
+                    <>
+                      <input
+                        id={key}
+                        type="text"
+                        name={key}
+                        value={editableData[key] || ""}
+                        onChange={handleChange}
+                        className="px-3 py-2 border bg-blueLight border-blue outline-none rounded-md text-blue"
+                      />
+                      {errors[key] && (
+                        <p className="text-red text-xs mt-1">{errors[key]}</p>
+                      )}
+                    </>
                   ) : (
                     <p className="font-medium text-blue">
                       {editableData[key] || "-"}
@@ -178,6 +247,5 @@ export default function Dialog() {
         </footer>
       </section>
     </main>
-
   );
 }

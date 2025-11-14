@@ -81,12 +81,19 @@ export default function DialogChallenge({ onClose, onSubmit }) {
         </div>
 
         <form className="flex flex-col gap-5">
-          <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
+          <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow relative">
+            {selectedFile && (
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt="Preview"
+                className="absolute inset-0 w-full h-full object-cover rounded-xl"
+              />
+            )}
             <input
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              className="text-sm text-blue"
+              className="text-sm text-blue relative z-10"
             />
           </div>
 
