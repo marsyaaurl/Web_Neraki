@@ -206,7 +206,7 @@ export const umkm = [
     name: "Oleh-Oleh Mpok Mumun",
     owner: "Oleh-Oleh Mpok Mumun",
     category: "Makanan",
-    shortloc: "online",
+    shortloc: "Online",
     location: "Online",
     contact: {
       whatsapp: "081312463399",
