@@ -2,17 +2,11 @@
 import { useState } from "react";
 import Searchbar from "./Searchbar";
 import { usePathname } from "next/navigation";
-//import { useSearch } from "./SearchContext";
 
 export default function NavbarLoggedIn() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  //const { searchQuery, setSearchQuery } = useSearch();
-
- // const handleSearch = (e) => {
-  //  e.preventDefault();
-  //};
-
+ 
   const menuItems = [
     { name: "Home", href: "/Home" },
     { name: "Challenge", href: "/Challenge" },
@@ -55,13 +49,7 @@ export default function NavbarLoggedIn() {
         </ul>
 
         <div>
-          <Searchbar
-            variant="blue"
-            size="lg"
-           // value={searchQuery}
-           // onChange={setSearchQuery}
-           // onSubmit={handleSearch}
-          />
+          <Searchbar variant="blue" size="lg" />
         </div>
       </div>
 

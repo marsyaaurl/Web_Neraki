@@ -4,12 +4,12 @@ import { MapPin } from "lucide-react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp, faInstagram } from "@fortawesome/free-brands-svg-icons";
-//menambahkan import untuk search
+
 import { useSearch } from "./SearchContext";
 import { useMemo } from "react";
 
 export default function UmkmList({ umkmData = [] }) {
-  //tambah searchQuery
+  
   const { searchQuery } = useSearch();
   const [selectedUmkm, setSelectedUmkm] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function UmkmList({ umkmData = [] }) {
     setIsFlipped(false);
   };
 
-  // Filter UMKM berdasarkan searchQuery
+  
   const filteredUmkmData = useMemo(() => {
     if (!searchQuery) return umkmData;
     return umkmData.filter(

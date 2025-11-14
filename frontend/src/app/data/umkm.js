@@ -1,6 +1,3 @@
-import NasiKokoh from "../../../public/assets/images/NasiKokoh.jpg";
-import HakaDimsum from "../../../public/assets/images/HakaDimsum.jpg";
-import MacksCreamery from "../../../public/assets/MacksCreamery.jpeg";
 import SateTaichanBangYoyo from "../../../public/assets/images/SateTaichanBangYoyo.jpg";
 import WaroengRajutFiah from "../../../public/assets/images/WaroengRajutFiah.jpg";
 import WaroengRajutFiah1 from "../../../public/assets/images/WaroengRajutFiah1.jpg";
@@ -40,6 +37,39 @@ import mkt3 from "../../../public/assets/images/mkt3.png";
 import mkt4 from "../../../public/assets/images/mkt4.png";
 import mkt5 from "../../../public/assets/images/mkt5.png";
 import mkt6 from "../../../public/assets/images/mkt6.png";
+import stby from "../../../public/assets/images/stby.png";
+import stby1 from "../../../public/assets/images/stby1.png";
+import stby2 from "../../../public/assets/images/stby2.png";
+import nk from "../../../public/assets/images/nk.png";
+import nk1 from "../../../public/assets/images/nk1.png";
+import nk2 from "../../../public/assets/images/nk2.png";
+import nk3 from "../../../public/assets/images/nk3.png";
+import nk4 from "../../../public/assets/images/nk4.png";
+import nk5 from "../../../public/assets/images/nk5.png";
+import nk6 from "../../../public/assets/images/nk6.png";
+import img from "../../../public/assets/images/img.png";
+import img1 from "../../../public/assets/images/img1.png";
+import img2 from "../../../public/assets/images/img2.png";
+import img3 from "../../../public/assets/images/img4.png";
+import img5 from "../../../public/assets/images/img5.png";
+import mmb from "../../../public/assets/images/mmb.png";
+import mmb1 from "../../../public/assets/images/mmb1.png";
+import mmb2 from "../../../public/assets/images/mmb2.png";
+import mmb3 from "../../../public/assets/images/mmb3.png";
+import mmb4 from "../../../public/assets/images/mmb4.png";
+import mmb5 from "../../../public/assets/images/mmb5.png";
+import adh from "../../../public/assets/images/adh.png";
+import adh1 from "../../../public/assets/images/adh1.png";
+import adh2 from "../../../public/assets/images/adh2.png";
+import adh3 from "../../../public/assets/images/adh3.png";
+import adh4 from "../../../public/assets/images/adh4.png";
+import adh5 from "../../../public/assets/images/adh5.png";
+import otg from "../../../public/assets/images/otg.png";
+import otg1 from "../../../public/assets/images/otg1.png";
+import otg2 from "../../../public/assets/images/otg2.png";
+import otg3 from "../../../public/assets/images/otg3.png";
+import otg4 from "../../../public/assets/images/otg4.png";
+import otg5 from "../../../public/assets/images/otg5.png";
 
 export const umkm = [
   {
@@ -173,8 +203,8 @@ export const umkm = [
 
   {
     image: Mpokmumun,
-    name: "Mpok Mumun",
-    owner: "-",
+    name: "Oleh-Oleh Mpok Mumun",
+    owner: "Oleh-Oleh Mpok Mumun",
     category: "Makanan",
     shortloc: "online",
     location: "Online",
@@ -200,7 +230,7 @@ export const umkm = [
   {
     image: mkt,
     name: "Mee Kwah Tauco",
-    owner: "-",
+    owner: "Mee Kwah Tauco",
     category: "Makanan",
     shortloc: "Sarinah, Jakarta Pusat",
     location: "Sarinah, Lantai Hayat - Jakarta Pusat",
@@ -214,18 +244,16 @@ export const umkm = [
     backStory: "",
     photos: [mkt1, mkt2, mkt3, mkt4, mkt5, mkt6],
     mood: {
-      energy: ["low", 'medium'],
+      energy: ["low", "medium"],
       vibe: ["social"],
       setting: ["indoor"],
     },
     tags: ["authentic", "traditional"],
-    dateTypes: [ "foodie", "chill"],
+    dateTypes: ["foodie", "chill"],
     mealTime: ["lunch", "brunch"],
   },
-
-  //Belum valid
   {
-    image: NasiKokoh,
+    image: nk,
     name: "Nasi Kokoh",
     owner: "Kokoh Kembar",
     category: "Makanan",
@@ -234,14 +262,13 @@ export const umkm = [
       "Blok M Mall Lantai Basement Blok B no 11, RT.3/RW.1, Melawai, Kebayoran Baru, South Jakarta City, Jakarta 12160",
     contact: {
       whatsapp: "",
-      instagram: "",
+      instagram: "nasikokoh",
     },
     description:
       "Menyajikan hidangan rumahan khas Nusantara dengan cita rasa autentik dan porsi yang memuaskan.",
-    priceRange: "",
-    backStory:
-      "Sejak tahun 2010, ia memulai usahanya dengan berjualan di emperan kawasan Fatahillah, Kota Tua. Pada tahun 2015, usahanya kemudian bergabung menjadi bagian dari program binaan Dekranasda, di mana ia aktif mengikuti berbagai acara dan bazar UMKM. Perjalanan usahanya sempat terhenti selama masa pandemi, serta saat ia fokus menjalani peran sebagai ibu dari dua anak yang lahir dengan jarak tiga tahun. Sebelumnya, ia pernah memiliki kios yang diberikan oleh Wali Kota Jakarta Utara di Mangga Dua Pasar Pagi lantai 5 selama satu tahun, namun tidak diperpanjang oleh pihak Sudin. Ia juga sempat mengelola kios di kawasan Fatahillah, Kota Tua selama satu setengah tahun, namun harus berhenti karena kesibukan mengurus anak yang mulai bersekolah. Kini, setelah beberapa tahun vakum, ia kembali aktif dengan semangat baru untuk melanjutkan perjalanan usahanya di dunia UMKM.",
-    photos: [],
+    priceRange: "27.000 - 32.000",
+    backStory: "",
+    photos: [nk1, nk2, nk3, nk4, nk5, nk6],
     atmospherePhotos: [],
     mood: {
       energy: ["medium", "high"],
@@ -253,76 +280,128 @@ export const umkm = [
     mealTime: ["lunch", "dinner", "brunch"],
   },
   {
-    image: HakaDimsum,
-    name: "Haka Dimsum",
-    owner: "Kenny Pranata",
-    category: "Makanan",
-    shortloc: "Melawai, Jakarta Selatan",
-    location:
-      "Jl. Sultan Hasanuddin Dalam No.3, RT.3/RW.1, Melawai, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12160",
+    image: img,
+    name: "I'm Good",
+    owner: "GNFI",
+    category: "Pakaian",
+    shortloc: "Online",
+    location: "Online",
     contact: {
-      whatsapp: "",
-      instagram: "",
+      whatsapp: "081331483649",
+      instagram: "imgood_official",
     },
     description:
-      "Menyajikan dimsum segar dengan rasa autentik oriental dalam suasana santai.",
-    priceRange: "",
+      "IM GOOD by GNFI adalah brand clothing yang menghadirkan apparel bertema positif sebagai pengingat bahwa banyak hal baik yang bisa disyukuri dari Indonesia. Dengan pesan Do Good, Share Good, IM GOOD mengajak penggunanya menyebarkan energi positif dan bangga menjadi bagian dari Indonesia.",
+    priceRange: "89.000 - 160.000",
     backStory: "",
-    photos: [],
+    photos: [img1, img2, img3, img5],
     atmospherePhotos: [],
     mood: {
-      energy: ["medium"],
-      vibe: ["social", "relaxing"],
+      energy: ["medium", "high"],
+      vibe: ["social", "comforting"],
       setting: ["indoor"],
     },
-    tags: ["dimsum", "asian-food", "casual", "comfort-food"],
-    dateTypes: ["romantic", "adventure", "foodie", "chill"],
-    mealTime: ["lunch", "snack", "afternoon"],
+    tags: ["hearty", "authentic"],
+    dateTypes: ["romantic", "adventure", "chill"],
+    mealTime: [],
   },
   {
-    image: MacksCreamery,
-    name: "Mack's Creamery",
-    owner: "Mike Tjakra",
+    image: mmb,
+    name: "MM Bakery",
+    owner: "MM Bakery",
     category: "Makanan",
-    shortloc: "Melawai, Jakarta Selatan",
-    location:
-      "Jl. Melawai 3 No.10, Melawai, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12160",
+    shortloc: "Bekasi Barat, Bekasi",
+    location: "Jl. Bintara 4, No. 6 RT 02/RW 15, Bekasi Barat, Bekasi 17134",
     contact: {
-      whatsapp: "",
-      instagram: "",
+      whatsapp: "08567161028",
+      instagram: "mm.bakery23",
     },
     description:
-      "Ice cream artisan dengan bahan premium dan cita rasa yang kreatif, cocok untuk pecinta dessert.",
+      "MM Bakery adalah produsen roti homemade yang sedang merintis di wilayah Bekasi. Menghadirkan roti segar dan lezat setiap hari, MM Bakery berkomitmen menyediakan pilihan roti rumahan berkualitas untuk konsumen Bekasi dan sekitarnya.",
     priceRange: "",
     backStory: "",
-    photos: [],
+    photos: [mmb1, mmb2, mmb3, mmb4, mmb5],
     atmospherePhotos: [],
     mood: {
-      energy: ["low", "medium"],
-      vibe: ["peaceful", "creative", "cheerful"],
+      energy: ["medium", "high"],
+      vibe: ["social", "comforting"],
       setting: ["indoor"],
     },
-    tags: ["dessert", "sweet", "artisanal", "relaxing"],
-    dateTypes: ["romantic", "foodie", "chill"],
-    mealTime: ["breakfast", "snack", "afternoon", "dessert"],
+    tags: ["comfort-food", "hearty", "authentic", "traditional"],
+    dateTypes: ["romantic", "adventure", "foodie", "chill"],
+    mealTime: ["lunch", "dinner", "brunch"],
   },
+
+  {
+    image: adh,
+    name: "Adelia Hijab",
+    owner: "Adelia Hijab",
+    category: "Pakaian",
+    shortloc: "Online",
+    location: "Online",
+    contact: {
+      whatsapp: "087854584957",
+      instagram: "adeliahijab.official",
+    },
+    description:
+      "Adelia Hijab adalah brand clothing hijab premium yang mengajak wanita untuk tampil anggun tidak hanya melalui busana, tetapi juga melalui ilmu, iman, dan karya. Dengan koleksi hijab berkualitas yang nyaman dan elegan, Adelia Hijab membantu menyempurnakan pesona setiap perempuan dalam kesehariannya.",
+    priceRange: "10.000 - 35.000",
+    backStory: "",
+    photos: [adh1, adh2, adh3, adh4, adh5],
+    atmospherePhotos: [],
+    mood: {
+      energy: ["medium", "high"],
+      vibe: ["social", "comforting"],
+      setting: ["indoor"],
+    },
+    tags: ["hearty", "authentic"],
+    dateTypes: ["romantic", "chill"],
+    mealTime: [],
+  },
+
+  {
+    image: otg,
+    name: "Otings",
+    owner: "Otings",
+    category: "Pakaian",
+    shortloc: "DKI Jakarta",
+    location: "DKI Jakarta (Tersedia Online)",
+    contact: {
+      whatsapp: "081282014604",
+      instagram: "otings.id",
+    },
+    description:
+      "Otings adalah brand hijab yang menghadirkan scarf voal ringan dengan desain hand-drawn yang cantik dan elegan. Dengan detail lasercut yang rapi dan tampilan yang timeless, hijab ini menjadi pelengkap sempurna untuk gaya sehari-hari.",
+    priceRange: "100.000 - 200.000",
+    backStory: "",
+    photos: [otg1, otg2, otg3, otg4, otg5],
+    atmospherePhotos: [],
+    mood: {
+      energy: ["medium", "high"],
+      vibe: ["social", "comforting"],
+      setting: ["indoor"],
+    },
+    tags: ["hearty", "authentic"],
+    dateTypes: ["romantic", "chill"],
+    mealTime: [],
+  },
+
   {
     image: SateTaichanBangYoyo,
     name: "Sate Taichan Bang Yoyo",
     owner: "John Afifi",
     category: "Makanan",
-    shortloc: "Tebet, Jakarta Selatan",
-    location:
-      "Jl. Tebet Barat Raya No.52 12, RT.6/RW.7, Tebet Bar., Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810",
+    shortloc: "Online",
+    location: "Online",
     contact: {
       whatsapp: "",
-      instagram: "",
+      instagram: "satetaichanbangyoyo",
     },
     description:
       "Sate taichan dengan rasa pedas khas dan daging ayam lembut, cocok untuk pencinta kuliner malam.",
     priceRange: "",
     backStory: "",
-    photos: [],
+    photos: [stby, stby1, stby2],
     atmospherePhotos: [],
     mood: {
       energy: ["high"],

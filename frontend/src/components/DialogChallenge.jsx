@@ -7,21 +7,23 @@ import { useState, useEffect } from "react";
 export default function DialogChallenge({ onClose, onSubmit }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [captionText, setCaptionText] = useState("");
-  const [userProfilePic, setUserProfilePic] = useState("/path/to/default/avatar.jpg");
+  const [userProfilePic, setUserProfilePic] = useState(
+    "/path/to/default/avatar.jpg"
+  );
   const [userName, setUserName] = useState("User");
 
-  // ⬇️ Ambil data user dari localStorage
   useEffect(() => {
     const stored = localStorage.getItem("user");
+    const savedAvatar = localStorage.getItem("avatar");
     if (stored) {
       const parsed = JSON.parse(stored);
 
-      if (parsed?.profileImage) {
-        setUserProfilePic(parsed.profileImage);
-      }
       if (parsed?.username) {
         setUserName(parsed.username);
       }
+    }
+    if (savedAvatar) {
+      setUserProfilePic(savedAvatar);
     }
   }, []);
 
@@ -36,14 +38,14 @@ export default function DialogChallenge({ onClose, onSubmit }) {
   const handleSubmit = () => {
     if (selectedFile && captionText.trim()) {
       const newPost = {
-        username: userName,               // ⬅️ Pakai username asli
+        username: userName,
         caption: captionText,
         imgContent: URL.createObjectURL(selectedFile),
         hashtags: "#UMKM #Neraki",
-        imgUser: userProfilePic,          // ⬅️ Foto profil sesuai login
+        imgUser: userProfilePic,
         userNameComment: "",
         userComment: "",
-        imgSrc: userProfilePic,           // ⬅️ Avatar untuk comment
+        imgSrc: userProfilePic,
       };
 
       onSubmit(newPost);
@@ -56,7 +58,6 @@ export default function DialogChallenge({ onClose, onSubmit }) {
   return (
     <main className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
       <section className="relative bg-white flex flex-col py-6 px-8 md:px-10 rounded-3xl w-11/12 max-w-lg gap-6 shadow-xl">
-
         <button
           type="button"
           onClick={onClose}
@@ -81,7 +82,12 @@ export default function DialogChallenge({ onClose, onSubmit }) {
 
         <form className="flex flex-col gap-5">
           <div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
-            <input type="file" accept="image/*" onChange={handleFileChange} className="text-sm text-blue" />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="text-sm text-blue"
+            />
           </div>
 
           <textarea
@@ -92,7 +98,12 @@ export default function DialogChallenge({ onClose, onSubmit }) {
             className="border-2 border-x-blueLight py-3 px-3 outline-none w-full rounded-md placeholder:text-blueHover text-blue"
           />
 
-          <Button label="Bagikan" variant="blue" className="py-2.5 px-3 w-full" onClick={handleSubmit} />
+          <Button
+            label="Bagikan"
+            variant="blue"
+            className="py-2.5 px-3 w-full"
+            onClick={handleSubmit}
+          />
         </form>
       </section>
     </main>
