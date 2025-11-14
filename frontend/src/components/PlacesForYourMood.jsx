@@ -65,15 +65,15 @@ export default function PlacesForYourMood() {
   return (
     <>
       <div 
-        className="relative w-1/3 h-auto cursor-pointer transition-transform hover:scale-105"
+        className="relative w-full md:w-1/3 h-auto cursor-pointer transition-transform hover:scale-105"
         onClick={() => setIsClicked(true)}
       >
         <div className="bg-blueLight rounded-2xl w-full p-6 pb-0 relative overflow-hidden border-l-8 border-blue">
           <h1 className="text-blue font-bold text-2xl mb-1 relative z-10">
-            Places For Your Mood
+            Tempat untuk Moodmu
           </h1>
           <p className="text-blue text-lg mb-4 relative z-10">
-            Discover cozy places that fit how you feel today
+            Temukan tempat untuk suasana hatimu hari ini!
           </p>
 
           <div className="flex justify-end items-end relative z-10">
