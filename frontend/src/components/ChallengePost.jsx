@@ -1,28 +1,29 @@
-"use-client";
-import { CircleUser, Image, Send } from "lucide-react";
+"use client";
+
+import { Send } from "lucide-react";
 import { useState } from "react";
 
 export default function ChallengePost({
-  username = "John Doe",
-  caption = " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  hashtags = "#UMKM #Neraki #Enak",
-  imgUser = "",
-  userNameComment = "Jane Doe",
-  userComment = "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-  imgSrc = "",
-  imgContent = "",
-  currentUserProfilePic = "/path/to/default/avatar.jpg",
-  currentUserName = "Railly_1",
-  isNewPost = false,
+  username,
+  caption,
+  hashtags,
+  imgUser,
+  imgSrc,
+  imgContent,
+  userNameComment,
+  userComment,
+  currentUserName,
+  currentUserProfilePic,
 }) {
   const [commentText, setCommentText] = useState("");
+
   const [comments, setComments] = useState(
-    !isNewPost && userComment
+    userComment
       ? [
           {
             userName: userNameComment,
             comment: userComment,
-            imgSrc: imgUser,
+            imgSrc: imgUser || "/avatar-default.png",
           },
         ]
       : []
@@ -37,89 +38,94 @@ export default function ChallengePost({
       const newComment = {
         userName: currentUserName,
         comment: commentText,
-        imgSrc: currentUserProfilePic,
+        imgSrc:
+          currentUserProfilePic && currentUserProfilePic.trim() !== ""
+            ? currentUserProfilePic
+            : "/avatar-default.png",
       };
+
       setComments([...comments, newComment]);
       setCommentText("");
     }
   };
 
   return (
-    <div className=" flex flex-row gap-6 lg:gap-7">
-      <div className=" w-fit h-fit flex justify-center rounded-full">
+    <div className="flex gap-4 lg:gap-7">
+      {/* AVATAR */}
+      <div className="w-fit h-fit flex justify-center rounded-full shrink-0">
         <img
-          src={imgSrc}
-          width={65}
-          height={65}
-          className=" flex justify-center rounded-full"
+          src={imgSrc || "/avatar-default.png"}
+          className="rounded-full object-cover w-10 h-10 lg:w-[55px] lg:h-[55px]"
         />
       </div>
 
+      {/* POST CARD */}
       <div
-        className="w-full px-8 py-6 backdrop-blur-md rounded-3xl"
-        style={{ boxShadow: "0 0 7px rgba(0, 0, 0, 0.1)" }}
+        className="w-full px-5 py-5 backdrop-blur-md rounded-3xl"
+        style={{ boxShadow: "0 0 7px rgba(0,0,0,0.1)" }}
       >
-        <div className=" gap-4 items-center flex flex-col lg:flex-row ">
-          <div className="w-full lg:w-2/5 h-64 rounded-2xl flex  justify-center">
-            <img src={imgContent} sizes="100%" className=" rounded-xl" />
+        {/* FLEX WRAPPER */}
+        <div className="flex flex-col lg:flex-row gap-5 lg:items-start">
+          {/* IMAGE */}
+          <div className="w-full lg:w-2/5">
+            <img
+              src={imgContent || "/image-placeholder.png"}
+              className="rounded-xl object-cover w-full aspect-[4/3] lg:h-64"
+            />
           </div>
-          <div className=" w-full flex flex-col justify-between gap-4">
-            <div className="flex flex-col gap-2">
-              <h1 className=" font-semibold text-xl text-blue">{username}</h1>
 
-              <div className=" flex flex-col gap-1">
-                <p>{caption}</p>
-                <p className=" font-medium">{hashtags}</p>
+          {/* TEXT + COMMENT */}
+          <div className="w-full flex flex-col gap-4">
+            <div>
+              <h1 className="font-semibold text-xl text-blue">{username}</h1>
+              <p>{caption}</p>
+              <p className="font-medium">{hashtags}</p>
+            </div>
+
+            <hr />
+
+            {/* COMMENTS LIST */}
+            <div className="px-1 rounded-xl w-full flex items-start">
+              <div className="flex flex-col gap-y-3 w-full">
+                <h2 className="font-semibold text-yellowHover">Comments</h2>
+
+                {comments.map((comment, index) => (
+                  <div key={index} className="flex flex-row gap-3">
+                    <img
+                      src={comment.imgSrc || "/avatar-default.png"}
+                      width={40}
+                      height={40}
+                      className="rounded-full object-cover w-10 h-10 lg:w-[55px] lg:h-[55px]"
+                    />
+
+                    <div>
+                      <h1 className="font-medium text-base text-blue">
+                        {comment.userName}
+                      </h1>
+                      <p className="text-sm">{comment.comment}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <hr className="" />
-
-            {!isNewPost && comments.length > 0 && (
-              <div className="px-3 rounded-xl w-full flex items-center">
-                <div className="flex flex-col gap-y-3">
-                  <h2 className="font-semibold text-yellowHover">Comments</h2>
-                  {comments.map((comment, index) => (
-                    <div key={index} className="flex flex-row gap-4 ">
-                      <div className=" w-fit h-fit border-2 border-red  rounded-full">
-                        <img
-                          src={comment.imgSrc}
-                          width={45}
-                          height={45}
-                          className=" flex justify-center rounded-full"
-                        />
-                      </div>
-                      <div>
-                        <h1 className=" font-medium text-base text-blue">
-                          {comment.userName}
-                        </h1>
-
-                        <div className=" flex flex-col gap-3 text-sm">
-                          <p>{comment.comment}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className=" flex gap-5 items-center">
-              <div className=" border-2 border-blue px-4 py-3.5 rounded-full w-full h-15 ">
+            {/* COMMENT INPUT */}
+            <div className="flex gap-4 items-center mt-2">
+              <div className="border-2 border-blue px-4 py-2.5 rounded-full w-full">
                 <input
                   type="text"
                   placeholder="Comment"
                   value={commentText}
                   onChange={handleCommentChange}
-                  className=" w-full outline-none placeholder:text-blueHover"
+                  className="w-full outline-none placeholder:text-blueHover"
                 />
               </div>
 
               <div
-                className=" bg-blue p-4 rounded-full cursor-pointer w-fit hover:shadow-lg hover:shadow-blueHover transition-shadow"
+                className="bg-blue p-3 rounded-full cursor-pointer hover:shadow-lg hover:shadow-blueHover transition-shadow"
                 onClick={handleAddComment}
               >
-                <Send size={24} color="#fff" />
+                <Send size={22} color="#fff" />
               </div>
             </div>
           </div>
@@ -127,225 +133,4 @@ export default function ChallengePost({
       </div>
     </div>
   );
-}
-
-{
-  /*"use-client";
-import { CircleUser, Image, Send } from "lucide-react";
-import { useState } from "react";
-
-export default function ChallengePost({
-  username = "John Doe",
-  caption = " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  hashtags = "#UMKM #Neraki #Enak",
-  imgUser = "",
-  userNameComment = "Jane Doe",
-  userComment = "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-  imgSrc = "",
-  imgContent = "",
-  currentUserProfilePic = "/path/to/default/avatar.jpg",
-  currentUserName = "Railly_1",
-  isNewPost = false,
-}) {
-  const [commentText, setCommentText] = useState("");
-  const [comments, setComments] = useState(
-    !isNewPost && userComment
-      ? [
-          {
-            userName: userNameComment,
-            comment: userComment,
-            imgSrc: imgUser,
-          },
-        ]
-      : []
-  );
-
-  const handleCommentChange = (e) => {
-    setCommentText(e.target.value);
-  };
-
-  const handleAddComment = () => {
-    if (commentText.trim()) {
-      const newComment = {
-        userName: currentUserName,
-        comment: commentText,
-        imgSrc: currentUserProfilePic,
-      };
-      setComments([...comments, newComment]);
-      setCommentText("");
-    }
-  };
-
-  return (
-    <div className=" flex flex-row gap-6 lg:gap-7">
-      <div className=" w-fit h-fit flex justify-center rounded-full">
-        <img
-          src={imgSrc}
-          width={65}
-          height={65}
-          className=" flex justify-center rounded-full"
-        />
-      </div>
-
-      <div
-        className="w-full px-8 py-6 backdrop-blur-md rounded-3xl"
-        style={{ boxShadow: "0 0 7px rgba(0, 0, 0, 0.1)" }}
-      >
-        <div className=" gap-4 items-center flex flex-col lg:flex-row ">
-          <div className="w-full lg:w-2/5 h-64 rounded-2xl flex  justify-center">
-            <img src={imgContent} sizes="100%" className=" rounded-xl" />
-          </div>
-          <div className=" w-full flex flex-col justify-between gap-4">
-            <div className="flex flex-col gap-2">
-              <h1 className=" font-semibold text-xl text-blue">{username}</h1>
-
-              <div className=" flex flex-col gap-1">
-                <p>{caption}</p>
-                <p className=" font-medium">{hashtags}</p>
-              </div>
-            </div>
-
-            <hr className="" />
-
-            {comments.length > 0 && (
-              <div className="px-3 rounded-xl w-full flex items-center">
-                <div className="flex flex-col gap-y-3">
-                  <h2 className="font-semibold text-yellowHover">Comments</h2>
-                  {comments.map((comment, index) => (
-                    <div key={index} className="flex flex-row gap-4 ">
-                      <div className=" w-fit h-fit border-2 border-red  rounded-full">
-                        <img
-                          src={comment.imgSrc}
-                          width={45}
-                          height={45}
-                          className=" flex justify-center rounded-full"
-                        />
-                      </div>
-                      <div>
-                        <h1 className=" font-medium text-base text-blue">
-                          {comment.userName}
-                        </h1>
-
-                        <div className=" flex flex-col gap-3 text-sm">
-                          <p>{comment.comment}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {!isNewPost && (
-              <div className=" flex gap-5 items-center">
-                <div className=" border-2 border-blue px-4 py-3.5 rounded-full w-full h-15 ">
-                  <input
-                    type="text"
-                    placeholder="Comment"
-                    value={commentText}
-                    onChange={handleCommentChange}
-                    className=" w-full outline-none placeholder:text-blueHover"
-                  />
-                </div>
-
-                <div
-                  className=" bg-blue p-4 rounded-full cursor-pointer w-fit hover:shadow-lg hover:shadow-blueHover transition-shadow"
-                  onClick={handleAddComment}
-                >
-                  <Send size={24} color="#fff" />
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}*/
-}
-
-{
-  /*"use-client";
-import { CircleUser, Image, Send } from "lucide-react";
-
-export default function ChallengePost({
-  username = "John Doe",
-  caption = " Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  hashtags = "#UMKM #Neraki #Enak",
-  imgUser = "",
-  userNameComment = "Jane Doe",
-  userComment = "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-  imgSrc = "",
-  imgContent = "",
-}) {
-  return (
-    <div className=" flex flex-row gap-6 lg:gap-7">
-      <div className=" w-auto h-auto flex justify-center rounded-full">
-        <img
-          src={imgSrc}
-         
-          className=" w-16 h-14 flex justify-center rounded-full"
-        />
-      </div>
-
-      <div className="w-full px-8 py-6 backdrop-blur-md rounded-3xl" style={{ boxShadow: '0 0 7px rgba(0, 0, 0, 0.1)' }}>
-        <div className=" gap-4 items-center flex flex-col lg:flex-row ">
-          <div className="w-full lg:w-2/5 h-64 rounded-2xl flex  justify-center">
-            <img src={imgContent} sizes="100%" className=" rounded-xl" />
-          </div>
-          <div className=" w-full flex flex-col justify-between gap-4">
-            <div className="flex flex-col gap-2">
-              <h1 className=" font-semibold text-xl text-blue">{username}</h1>
-
-              <div className=" flex flex-col gap-1">
-                <p>{caption}</p>
-                <p className=" font-medium">{hashtags}</p>
-              </div>
-            </div>
-
-            <hr className=""/>
-
-            <div className="px-3 rounded-xl w-full flex items-center">
-              <div className="flex flex-col gap-y-3">
-                <h2 className="font-semibold text-yellowHover">Comments</h2>
-                <div className="flex flex-row gap-4 ">
-                  <div className=" w-fit h-fit border-2 border-red  rounded-full">
-                    <img
-                      src={imgUser}
-                      
-                      className="w-10 h-10 flex justify-center rounded-full"
-                    />
-                  </div>
-                  <div>
-                    <h1 className=" font-medium text-base text-blue">
-                      {userNameComment}
-                    </h1>
-
-                    <div className=" flex flex-col gap-3 text-sm">
-                      <p>{userComment}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className=" flex gap-5 items-center">
-              <div className=" border-2 border-blue px-4 py-3.5 rounded-full w-full h-15 ">
-                <input
-                  type="text"
-                  placeholder="Comment"
-                  className=" w-full outline-none placeholder:text-blueHover"
-                />
-              </div>
-
-              <div className=" bg-blue p-4 rounded-full cursor-pointer w-fit hover:shadow-lg hover:shadow-blueHover transition-shadow">
-                <Send size={24} color="#fff" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}*/
 }
