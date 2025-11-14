@@ -12,7 +12,6 @@ export default function DialogChallenge({ onClose, onSubmit }) {
   );
   const [userName, setUserName] = useState("User");
 
-  // ⬇️ Ambil data user dari localStorage
   useEffect(() => {
     const stored = localStorage.getItem("user");
     const savedAvatar = localStorage.getItem("avatar");
@@ -39,14 +38,14 @@ export default function DialogChallenge({ onClose, onSubmit }) {
   const handleSubmit = () => {
     if (selectedFile && captionText.trim()) {
       const newPost = {
-        username: userName, // ⬅️ Pakai username asli
+        username: userName,
         caption: captionText,
         imgContent: URL.createObjectURL(selectedFile),
         hashtags: "#UMKM #Neraki",
-        imgUser: userProfilePic, // ⬅️ Foto profil sesuai login
+        imgUser: userProfilePic,
         userNameComment: "",
         userComment: "",
-        imgSrc: userProfilePic, // ⬅️ Avatar untuk comment
+        imgSrc: userProfilePic,
       };
 
       onSubmit(newPost);
@@ -110,4 +109,3 @@ export default function DialogChallenge({ onClose, onSubmit }) {
     </main>
   );
 }
-

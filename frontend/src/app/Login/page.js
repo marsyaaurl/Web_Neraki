@@ -121,60 +121,6 @@ export default function login() {
         });
       }
     }
-
-    {
-      /*if (activeForm === "signup") {
-      localStorage.setItem("user", JSON.stringify(formData));
-      setAlert({
-        type: "success",
-        message: "Akun berhasil dibuat. Silakan login.",
-      });
-      setActiveForm("login");
-    } else {
-      const savedUser = JSON.parse(localStorage.getItem("user"));
-
-      if (
-        savedUser &&
-        savedUser.username === formData.username &&
-        savedUser.password === formData.password
-      ) {
-        setAlert({ type: "success", message: "Login berhasil!" });
-        window.location.href = "/Home";
-      } else if (!savedUser) {
-        setAlert({
-          type: "error",
-          message: "User tidak ditemukan! Silakan sign up.",
-        });
-      } else {
-        setAlert({
-          type: "error",
-          message: "Username atau password tidak sesuai.",
-        });
-      }
-    }*/
-    }
-
-    {
-      /*if (activeForm === "signup") {
-      localStorage.setItem("user", JSON.stringify(formData));
-      alert("Silakan login");
-      setActiveForm("login");
-    } else {
-      const savedUser = JSON.parse(localStorage.getItem("user"));
-
-      if (
-        savedUser &&
-        savedUser.username === formData.username &&
-        savedUser.password === formData.password
-      ) {
-        window.location.href = "/Home";
-      } else if (!savedUser) {
-        alert("User tidak ditemukan! Silakan sign up.");
-      } else {
-        alert("Username atau password tidak sesuai.");
-      }
-    }*/
-    }
   };
 
   return (

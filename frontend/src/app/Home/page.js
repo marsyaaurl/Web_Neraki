@@ -13,11 +13,11 @@ import ChallengeCard from "@/components/ChallengeCard";
 import { SearchProvider } from "@/components/SearchContext";
 
 export default function Home() {
-  // ✅ State (should be above return)
+  
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedPrices, setSelectedPrices] = useState([]);
 
-  // ✅ Filter logic using useMemo (efficient filtering)
+
   const filteredData = useMemo(() => {
     return umkm.filter((item) => {
       const categoryMatch =

@@ -44,7 +44,6 @@ export default function Challenge() {
     },
   ]);
 
-  // ⭐ FIXED → ambil user dari "user" (sesuai signup/login)
   const [currentUserName, setCurrentUserName] = useState("");
   const [currentUserAvatar, setCurrentUserAvatar] = useState("");
 
@@ -94,7 +93,7 @@ export default function Challenge() {
               caption={post.caption}
               hashtags={post.hashtags}
               imgUser={post.imgUser}     
-              imgSrc={post.imgSrc}       // FOTO PROFIL POSTER
+              imgSrc={post.imgSrc}       
               imgContent={post.imgContent}
               userNameComment={post.userNameComment}
               userComment={post.userComment}
