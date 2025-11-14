@@ -16,7 +16,7 @@ export default function Challenge() {
         " Cobain es kopi susu dari UMKM lokal, rasanya mantap dan harganya bersahabat!",
       hashtags: "#Enak #Banget #Serius",
       imgUser: "/assets/images/adinda.jpg",
-      imgContent: "/assets/images/esKopi.jpg",
+      imgContent: "/assets/images/eskopi.jpg",
       userNameComment: "Adindadinda",
       userComment: "REALLLLL!!!!",
       imgSrc: "/assets/images/ayu.jpg",
