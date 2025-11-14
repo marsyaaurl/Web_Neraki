@@ -1,21 +1,23 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSession, useSessionContext } from '@supabase/auth-helpers-react';
 
 export default function ProtectedRoute({ children }) {
   const router = useRouter();
-  const session = useSession();
-  const { isLoading } = useSessionContext();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isLoading && !session) {
-      router.push('/Login');
-    }
-  }, [session, isLoading]);
+    const user = localStorage.getItem('user'); // atau token
 
-  if (isLoading || !session) {
+    if (!user) {
+      router.push('/Login');
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  if (loading) {
     return <div className="p-10 text-center">Loading...</div>;
   }
 
