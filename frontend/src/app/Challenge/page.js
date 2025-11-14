@@ -5,6 +5,7 @@ import DialogChallenge from "@/components/DialogChallenge";
 import NavbarLoggedIn from "@/components/NavbarLoggedIn";
 import { Plus } from "lucide-react";
 import { useState, useEffect } from "react";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function Challenge() {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,62 +67,64 @@ export default function Challenge() {
 
   return (
     <>
-      <NavbarLoggedIn />
+      <ProtectedRoute>
+        <NavbarLoggedIn />
 
-      <div className="min-h-screen flex flex-col justify-between pt-32 mx-8 lg:mx-24 pb-9 gap-10">
-        {/* CTA */}
-        <div className="flex flex-col gap-5">
-          <h1 className="text-black font-bold text-3xl">
-            Sudah coba UMKM lokal? <br /> Unggah fotomu dan dukung mereka!
-          </h1>
-          <div>
-            <Button
-              label="Unggah Fotomu!"
-              variant=" blue"
-              className="py-2.5 px-6"
+        <div className="min-h-screen flex flex-col justify-between pt-32 mx-8 lg:mx-24 pb-9 gap-10">
+          {/* CTA */}
+          <div className="flex flex-col gap-5">
+            <h1 className="text-black font-bold text-3xl">
+              Sudah coba UMKM lokal? <br /> Unggah fotomu dan dukung mereka!
+            </h1>
+            <div>
+              <Button
+                label="Unggah Fotomu!"
+                variant=" blue"
+                className="py-2.5 px-6"
+                onClick={() => setIsOpen(true)}
+              />
+            </div>
+          </div>
+
+          {/* POST LIST */}
+          <div className="flex flex-col gap-7">
+            {posts.map((post, index) => (
+              <ChallengePost
+                key={index}
+                username={post.username}
+                caption={post.caption}
+                hashtags={post.hashtags}
+                imgUser={post.imgUser}     
+                imgSrc={post.imgSrc}       
+                imgContent={post.imgContent}
+                userNameComment={post.userNameComment}
+                userComment={post.userComment}
+                currentUserName={currentUserName}
+                currentUserProfilePic={currentUserAvatar}
+              />
+            ))}
+          </div>
+
+          {/* FAB BUTTON */}
+          <div className="flex justify-end sticky bottom-6">
+            <div
+              className="bg-blue w-fit p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-blueHover transition-shadow"
               onClick={() => setIsOpen(true)}
-            />
+            >
+              <Plus size={40} color="#fff" />
+            </div>
           </div>
         </div>
 
-        {/* POST LIST */}
-        <div className="flex flex-col gap-7">
-          {posts.map((post, index) => (
-            <ChallengePost
-              key={index}
-              username={post.username}
-              caption={post.caption}
-              hashtags={post.hashtags}
-              imgUser={post.imgUser}     
-              imgSrc={post.imgSrc}       
-              imgContent={post.imgContent}
-              userNameComment={post.userNameComment}
-              userComment={post.userComment}
-              currentUserName={currentUserName}
-              currentUserProfilePic={currentUserAvatar}
-            />
-          ))}
-        </div>
-
-        {/* FAB BUTTON */}
-        <div className="flex justify-end sticky bottom-6">
-          <div
-            className="bg-blue w-fit p-2 rounded-full cursor-pointer hover:shadow-lg hover:shadow-blueHover transition-shadow"
-            onClick={() => setIsOpen(true)}
-          >
-            <Plus size={40} color="#fff" />
-          </div>
-        </div>
-      </div>
-
-      {isOpen && (
-        <DialogChallenge
-          onClose={() => setIsOpen(false)}
-          onSubmit={handleNewPost}
-          currentUserName={currentUserName}
-          currentUserAvatar={currentUserAvatar}
-        />
-      )}
+        {isOpen && (
+          <DialogChallenge
+            onClose={() => setIsOpen(false)}
+            onSubmit={handleNewPost}
+            currentUserName={currentUserName}
+            currentUserAvatar={currentUserAvatar}
+          />
+        )}
+      </ProtectedRoute>
     </>
   );
 }
