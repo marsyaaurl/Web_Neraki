@@ -111,29 +111,6 @@ export default function DialogChallenge({ onClose, onSubmit }) {
             className="py-2.5 px-3 w-full"
             onClick={handleSubmit}
           />
-          {/*<div className="bg-yellowLightHover h-60 rounded-xl flex items-end justify-start border border-yellow">
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="text-sm text-blue"
-            />
-          </div>
-
-          <textarea
-            rows={6}
-            placeholder="Tambahkan keterangan..."
-            value={captionText}
-            onChange={handleCaptionChange}
-            className="border-2 border-x-blueLight py-3 px-3 outline-none w-full rounded-md placeholder:text-blueHover text-blue"
-          />
-
-          <Button
-            label="Bagikan"
-            variant="blue"
-            className="py-2.5 px-3 w-full"
-            onClick={handleSubmit}
-          />*/}
         </form>
       </section>
     </main>
