@@ -28,6 +28,18 @@ import Mutdeparfums3 from "../../../public/assets/images/Mutdeparfums3.png";
 import Mutdeparfums4 from "../../../public/assets/images/Mutdeparfums4.png";
 import Mutdeparfums5 from "../../../public/assets/images/Mutdeparfums5.png";
 import Mutdeparfums6 from "../../../public/assets/images/Mutdeparfums6.png";
+import Mpokmumun from "../../../public/assets/images/Mpokmumun.png";
+import Mpokmumun1 from "../../../public/assets/images/Mpokmumun1.png";
+import Mpokmumun2 from "../../../public/assets/images/Mpokmumun2.png";
+import Mpokmumun3 from "../../../public/assets/images/Mpokmumun3.png";
+import Mpokmumun4 from "../../../public/assets/images/Mpokmumun4.png";
+import mkt from "../../../public/assets/images/mkt.png";
+import mkt1 from "../../../public/assets/images/mkt1.png";
+import mkt2 from "../../../public/assets/images/mkt2.png";
+import mkt3 from "../../../public/assets/images/mkt3.png";
+import mkt4 from "../../../public/assets/images/mkt4.png";
+import mkt5 from "../../../public/assets/images/mkt5.png";
+import mkt6 from "../../../public/assets/images/mkt6.png";
 
 export const umkm = [
   {
@@ -158,6 +170,59 @@ export const umkm = [
     dateTypes: ["romantic", "adventure", "chill"],
     mealTime: [],
   },
+
+  {
+    image: Mpokmumun,
+    name: "Mpok Mumun",
+    owner: "-",
+    category: "Makanan",
+    shortloc: "online",
+    location: "Online",
+    contact: {
+      whatsapp: "081312463399",
+      instagram: "mpokmumun.id",
+    },
+    description:
+      "Mpok Mumun adalah UMKM oleh-oleh khas Jakarta yang menggabungkan resep tradisional dan kemasan modern, cocok sebagai camilan maupun buah tangan khas ibu kota.",
+    priceRange: "13.000-35.000",
+    backStory: "",
+    photos: [Mpokmumun1, Mpokmumun2, Mpokmumun3, Mpokmumun4],
+    mood: {
+      energy: ["high"],
+      vibe: ["social"],
+      setting: ["indoor"],
+    },
+    tags: ["authentic", "traditional"],
+    dateTypes: ["adventure", "foodie", "chill"],
+    mealTime: ["lunch", "brunch"],
+  },
+
+  {
+    image: mkt,
+    name: "Mee Kwah Tauco",
+    owner: "-",
+    category: "Makanan",
+    shortloc: "Sarinah, Jakarta Pusat",
+    location: "Sarinah, Lantai Hayat - Jakarta Pusat",
+    contact: {
+      whatsapp: "082298130101",
+      instagram: "meekwahtauco",
+    },
+    description:
+      "Mee Kwah Tauco adalah mie berkuah khas dengan cita rasa tauco yang gurih dan autentik. Dibuat tanpa gluten, mie ini aman dan cocok untuk kamu yang sedang diet atau mencari pilihan makanan lebih sehat. Nikmat, ringan, dan tetap penuh rasa.",
+    priceRange: "",
+    backStory: "",
+    photos: [mkt1, mkt2, mkt3, mkt4, mkt5, mkt6],
+    mood: {
+      energy: ["low", 'medium'],
+      vibe: ["social"],
+      setting: ["indoor"],
+    },
+    tags: ["authentic", "traditional"],
+    dateTypes: [ "foodie", "chill"],
+    mealTime: ["lunch", "brunch"],
+  },
+
   //Belum valid
   {
     image: NasiKokoh,
