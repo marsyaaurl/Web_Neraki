@@ -11,7 +11,7 @@ import { useMemo } from "react";
 export default function UmkmList({ 
   umkmData = [], 
   selectedCategories = [], 
-  selectedPrices = [] 
+  selectedLocation = [] 
 }) {
   
   const { searchQuery } = useSearch();
@@ -34,7 +34,7 @@ export default function UmkmList({
   const filteredUmkmData = useMemo(() => {
   let data = [...umkmData];
 
-  // 🔍 Search Query
+  // Search Query
   if (searchQuery) {
     data = data.filter((item) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -46,22 +46,29 @@ export default function UmkmList({
     );
   }
 
-  // 🟦 CATEGORY FILTER
+  // CATEGORY FILTER
   if (selectedCategories.length > 0) {
     data = data.filter((item) =>
       selectedCategories.includes(item.category)
     );
   }
 
-  // 💰 PRICE FILTER — FIXED
-  if (selectedPrices.length > 0) {
-    data = data.filter((item) =>
-      selectedPrices.includes(item.priceRange)
-    );
+  /// LOCATION FILTER
+  if (selectedLocation.length > 0) {
+    data = data.filter((item) => {
+      const loc = item.location.toLowerCase();
+      const shortloc = item.shortloc.toLowerCase();
+
+      return selectedLocation.some((selected) =>
+        loc.includes(selected.toLowerCase()) ||
+        shortloc.includes(selected.toLowerCase())
+      );
+    });
   }
 
   return data;
-}, [umkmData, searchQuery, selectedCategories, selectedPrices]);
+}, [umkmData, searchQuery, selectedCategories, selectedLocation]);
+
 
   return (
     <div className="flex-1">
@@ -202,15 +209,17 @@ export default function UmkmList({
                           "No description available."}
                       </p>
 
-                      <div className="flex flex-row gap-x-2">
-                        <MapPin size={20} />
-                        <h4 className="font-semibold text-md mb-1">
-                          {selectedUmkm.shortloc}
-                        </h4>
-                      </div>
-                      <p className="text-sm text-gray-500 mb-4">
-                        {selectedUmkm.location}
-                      </p>
+                      <a href={selectedUmkm.mapLink}>
+                        <div className="flex flex-row gap-x-2">
+                          <MapPin size={20} />
+                          <h4 className="font-semibold text-md mb-1 hover:underline">
+                            {selectedUmkm.shortloc}
+                          </h4>
+                        </div>
+                        <p className="text-sm text-gray-500 mb-4 hover:underline">
+                          {selectedUmkm.location}
+                        </p>
+                      </a>
 
                       {/* Category & Price */}
                       <div className="flex gap-2 flex-wrap mb-4">

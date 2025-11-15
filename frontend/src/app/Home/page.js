@@ -14,7 +14,7 @@ import { SearchProvider } from "@/components/SearchContext";
 
 export default function Home() {
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [selectedPrices, setSelectedPrices] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState([]);
 
   const filteredData = useMemo(() => {
     return umkm.filter((item) => {
@@ -22,12 +22,17 @@ export default function Home() {
         selectedCategories.length === 0 ||
         selectedCategories.includes(item.category);
 
-      const priceMatch =
-        selectedPrices.length === 0 || selectedPrices.includes(item.priceRange);
+      const locationMatch =
+        selectedLocation.length === 0 ||
+        selectedLocation.some((loc) =>
+          item.shortloc.toLowerCase().includes(loc.toLowerCase()) ||
+          item.location.toLowerCase().includes(loc.toLowerCase())
+        );
 
-      return categoryMatch && priceMatch;
+      return categoryMatch && locationMatch;
     });
-  }, [selectedCategories, selectedPrices]);
+  }, [selectedCategories, selectedLocation]);
+
 
   return (
     <SearchProvider>
@@ -62,8 +67,8 @@ export default function Home() {
           <Filter
             selectedCategories={selectedCategories}
             setSelectedCategories={setSelectedCategories}
-            selectedPrices={selectedPrices}
-            setSelectedPrices={setSelectedPrices}
+            selectedLocation={selectedLocation}
+            setSelectedLocation={setSelectedLocation}
             filteredCount={filteredData.length}
           />
           <UmkmList umkmData={filteredData} />

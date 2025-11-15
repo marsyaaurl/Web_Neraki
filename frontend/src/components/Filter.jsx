@@ -4,14 +4,14 @@ import { useState } from "react";
 export default function Filter({ 
   selectedCategories = [], 
   setSelectedCategories = () => {}, 
-  selectedPrices = [], 
-  setSelectedPrices = () => {},
+  selectedLocation = [], 
+  setSelectedLocation = () => {},
   filteredCount = 0
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const category = ["Makanan", "Pakaian", "Elektronik", "Craft", "Kosmetik"];
-  const priceRange = ["Rp 0 - 50.000", "Rp 50.000 - 100.000", "Rp 100.000+"];
+  const location = ["Jakarta", "Bekasi"];
 
   const toggleCategory = (item) => {
     setSelectedCategories(prev => 
@@ -19,15 +19,15 @@ export default function Filter({
     );
   };
 
-  const togglePrice = (item) => {
-    setSelectedPrices(prev => 
+  const toggleLocation = (item) => {
+    setSelectedLocation(prev => 
       prev.includes(item) ? prev.filter(p => p !== item) : [...prev, item]
     );
   };
 
   const resetFilters = () => {
     setSelectedCategories([]);
-    setSelectedPrices([]);
+    setSelectedLocation([]);
   };
 
   return (
@@ -42,9 +42,9 @@ export default function Filter({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
           </svg>
           Filter
-          {(selectedCategories.length > 0 || selectedPrices.length > 0) && (
+          {(selectedCategories.length > 0 || selectedLocation.length > 0) && (
             <span className="bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">
-              {selectedCategories.length + selectedPrices.length}
+              {selectedCategories.length + selectedLocation.length}
             </span>
           )}
         </button>
@@ -103,15 +103,15 @@ export default function Filter({
                 </div>
               </div>
 
-              {/* Price Range */}
+              {/* Lokasi */}
               <div className="mb-6">
-                <h3 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Harga</h3>
+                <h3 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Lokasi</h3>
                 <div className="flex flex-col gap-2">
-                  {priceRange.map((item, index) => (
+                  {location.map((item, index) => (
                     <label 
                       key={index} 
                       className={`flex items-center p-3 rounded-lg cursor-pointer transition-all ${
-                        selectedPrices.includes(item)
+                        selectedLokasi.includes(item)
                           ? 'bg-blue-50 ring-2 ring-blue-500'
                           : 'bg-gray-50 hover:bg-gray-100'
                       }`}
@@ -119,10 +119,10 @@ export default function Filter({
                       <input 
                         type="checkbox" 
                         className="w-4 h-4 accent-blue-600"
-                        checked={selectedPrices.includes(item)}
-                        onChange={() => togglePrice(item)}
+                        checked={selectedLokasi.includes(item)}
+                        onChange={() => toggleLokasi(item)}
                       />
-                      <span className={`ml-3 text-sm ${selectedPrices.includes(item) ? 'font-semibold text-blue-700' : 'text-gray-700'}`}>
+                      <span className={`ml-3 text-sm ${selectedLokasi.includes(item) ? 'font-semibold text-blue-700' : 'text-gray-700'}`}>
                         {item}
                       </span>
                     </label>
@@ -187,14 +187,14 @@ export default function Filter({
             </div>
           </div>
 
-          {/* Price Range */}
+          {/* Lokasi */}
           <div className="mb-6">
             <h3 className="font-semibold text-gray-700 text-sm mb-3 uppercase tracking-wide flex items-center gap-2">
               <span className="w-1 h-4 bg-blue rounded-full"></span>
-              Harga
+              Lokasi
             </h3>
             <div className="flex flex-col gap-2">
-              {priceRange.map((item, index) => (
+              {location.map((item, index) => (
                 <label 
                   key={index} 
                   className="flex items-center p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition-all group"
@@ -202,10 +202,10 @@ export default function Filter({
                   <input 
                     type="checkbox" 
                     className="w-4 h-4 accent-blue-600"
-                    checked={selectedPrices.includes(item)}
-                    onChange={() => togglePrice(item)}
+                    checked={selectedLocation.includes(item)}
+                    onChange={() => toggleLocation(item)}
                   />
-                  <span className={`ml-3 text-sm ${selectedPrices.includes(item) ? 'font-semibold text-blue-600' : 'text-gray-700 group-hover:text-gray-900'}`}>
+                  <span className={`ml-3 text-sm ${selectedLocation.includes(item) ? 'font-semibold text-blue-600' : 'text-gray-700 group-hover:text-gray-900'}`}>
                     {item}
                   </span>
                 </label>
