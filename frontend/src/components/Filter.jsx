@@ -51,43 +51,21 @@ export default function Filter({
 
         {/* Bottom Sheet */}
         {isOpen && (
-          <div className="fixed inset-0 z-50 flex items-end justify-center">
-            <div
-              className="absolute inset-0 bg-black/30"
-              onClick={() => setIsOpen(false)}
-            ></div>
-
-            <div className="relative bg-white w-full rounded-t-3xl p-6 max-h-[80vh] overflow-y-auto shadow-2xl animate-slide-up">
-              {/* Header */}
-              <div className="flex justify-between items-center mb-6 pb-4 border-b">
-                <div>
-                  <h2 className="font-bold text-blue text-xl">Filter</h2>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {filteredCount} hasil ditemukan
-                  </p>
-                </div>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-gray-400 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl pl-5 py-6">
+              <div className="text-center mb-5">
+                <h2 className="font-bold text-xl text-blue">Filter</h2>
               </div>
-
-              {/* Categories */}
-              <div className="mb-6">
-                <h3 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Kategori</h3>
+              <div className="mb-6 pr-32">
+                <h3 className="font-semibold text-gray-700 text-sm mb-3 uppercase tracking-wide flex items-center gap-2">
+                  <span className="w-1 h-4 bg-blue rounded-full"></span>
+                  Kategori
+                </h3>
                 <div className="flex flex-col gap-2">
                   {category.map((item, index) => (
                     <label 
                       key={index} 
-                      className={`flex items-center p-3 rounded-lg cursor-pointer transition-all ${
-                        selectedCategories.includes(item)
-                          ? 'bg-blue-50 ring-2 ring-blue-500'
-                          : 'bg-gray-50 hover:bg-gray-100'
-                      }`}
+                      className="flex items-center p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition-all group"
                     >
                       <input 
                         type="checkbox" 
@@ -95,7 +73,7 @@ export default function Filter({
                         checked={selectedCategories.includes(item)}
                         onChange={() => toggleCategory(item)}
                       />
-                      <span className={`ml-3 text-sm ${selectedCategories.includes(item) ? 'font-semibold text-blue-700' : 'text-gray-700'}`}>
+                      <span className={`ml-3 text-sm ${selectedCategories.includes(item) ? 'font-semibold text-blue-600' : 'text-gray-700 group-hover:text-gray-900'}`}>
                         {item}
                       </span>
                     </label>
@@ -105,24 +83,23 @@ export default function Filter({
 
               {/* Lokasi */}
               <div className="mb-6">
-                <h3 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Lokasi</h3>
+                <h3 className="font-semibold text-gray-700 text-sm mb-3 uppercase tracking-wide flex items-center gap-2">
+                  <span className="w-1 h-4 bg-blue rounded-full"></span>
+                  Lokasi
+                </h3>
                 <div className="flex flex-col gap-2">
                   {location.map((item, index) => (
                     <label 
                       key={index} 
-                      className={`flex items-center p-3 rounded-lg cursor-pointer transition-all ${
-                        selectedLokasi.includes(item)
-                          ? 'bg-blue-50 ring-2 ring-blue-500'
-                          : 'bg-gray-50 hover:bg-gray-100'
-                      }`}
+                      className="flex items-center p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition-all group"
                     >
                       <input 
                         type="checkbox" 
                         className="w-4 h-4 accent-blue-600"
-                        checked={selectedLokasi.includes(item)}
-                        onChange={() => toggleLokasi(item)}
+                        checked={selectedLocation.includes(item)}
+                        onChange={() => toggleLocation(item)}
                       />
-                      <span className={`ml-3 text-sm ${selectedLokasi.includes(item) ? 'font-semibold text-blue-700' : 'text-gray-700'}`}>
+                      <span className={`ml-3 text-sm ${selectedLocation.includes(item) ? 'font-semibold text-blue-600' : 'text-gray-700 group-hover:text-gray-900'}`}>
                         {item}
                       </span>
                     </label>
@@ -130,17 +107,17 @@ export default function Filter({
                 </div>
               </div>
 
-              {/* Buttons */}
-              <div className="flex gap-3 pt-4 border-t">
+              {/* Reset Button */}
+              <div className="flex px-10 justify-between w-full gap-x-10">
                 <button
-                  className="flex-1 py-3 font-semibold rounded-lg border-2 border-gray-200 text-gray-700 hover:bg-gray-50"
                   onClick={resetFilters}
+                  className="px-5 py-2.5 text-sm text-blue border-2 hover:bg-blue-50 font-semibold rounded-lg transition-all"
                 >
                   Reset
                 </button>
                 <button
-                  className="flex-1 py-3 font-semibold rounded-lg border-2 bg-blue text-white hover:bg-gray-50"
                   onClick={() => setIsOpen(false)}
+                  className="px-5 py-2.5 text-sm text-white bg-blue hover:bg-blue/50 font-semibold rounded-lg transition-all"
                 >
                   Terapkan
                 </button>
