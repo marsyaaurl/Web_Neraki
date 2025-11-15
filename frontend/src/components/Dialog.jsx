@@ -228,7 +228,7 @@ export default function Dialog() {
         </article>
 
         {/* Action Buttons */}
-        <footer className="flex gap-3">
+        <footer className="flex flex-col gap-3">
           {isEditing ? (
             <Button
               label="Simpan"
@@ -244,6 +244,14 @@ export default function Dialog() {
               onClick={() => setIsEditing(true)}
             />
           )}
+          <Button
+            label="Logout"
+            variant="red"
+            className="py-2.5 w-full"
+            onClick={() => {
+              window.location.href = "/";
+            }}
+          />
         </footer>
       </section>
     </main>
